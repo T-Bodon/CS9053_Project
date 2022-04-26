@@ -5,7 +5,7 @@
   <meta http-equiv="Content-type" content="text/html" />
   <meta name="title" content="foryou" />
   <meta name="language" content="zh" />
-  <title>foryou后台管理系统</title>
+  <title>foryou Backend Management System</title>
   <link rel="stylesheet" href="../css/order.css">
   <link rel="stylesheet" href="../css/bootstrap-datepicker3.css">
   <link rel="stylesheet"
@@ -43,18 +43,18 @@
 	<section id="content">
 		<div class="g5 list_panel no_dine main_container" id="list_panel">
 			<div class="title_and_filter head-color">
-				<h2 name="counts">订单列表</h2>
+				<h2 name="counts">Order list</h2>
 				<form  id="order_center_filter">
-					<span class="ml10">选择日期：</span> <span> <input type="text" value=""
+					<span class="ml10">Select Date：</span> <span> <input type="text" value=""
           id="datepicker" class="datepicker">
-        </span> <input type="button" id="select" value="查询" class="submit" />
+        </span> <input type="button" id="select" value="Query" class="submit" />
       </form>
     </div>
 
     <div class="order_filter_summary">
       <span class="fr mr30"> <a class="blue"
        style="padding: 2px; margin-right: 5px;">1</a>
-     </span> 共计：<span name="counts"></span> 张有效订单，总金额：<span name="total_price"></span>元
+     </span> Total：<span name="counts"></span> valid orders，total amount：<span name="total_price"></span>$
    </div>
 
    <div id="list_container">
@@ -66,7 +66,7 @@
 <script>
   $('#datepicker').datepicker({
    todayBtn : "linked",
-   language : "zh-CN",
+   language : "EN",
    autoclose : true,
  });
 
@@ -92,7 +92,7 @@
 			server:"56846a8a2fee49d14901d39cc48b8b2a"
 		}, function(text) {
 			var data = eval('(' + text + ')');
-			$("h2[name='counts']").text("订单列表(" + data.counts + ")");
+			$("h2[name='counts']").text("Order list(" + data.counts + ")");
 			$("span[name='counts']").text(data.counts);
 			$("span[name='total_price']").text(data.total_price);
 
@@ -126,17 +126,17 @@
 			}
 			//判断订单状态
 			if (data.status == "2") {
-				text = text.replace(/(orderStatus##)/g, "待确认");
+				text = text.replace(/(orderStatus##)/g, "Waiting for confirmation");
 			} else if (data.status == "3") {
-				text = text.replace(/(orderStatus##)/g, "配送中");
+				text = text.replace(/(orderStatus##)/g, "On the way");
 			} else if (data.status == "4"||data.status=="5") {
-				text = text.replace(/(orderStatus##)/g, "交易完成");
+				text = text.replace(/(orderStatus##)/g, "Order Completed");
 			}else if (data.status == "9") {
-				text = text.replace(/(orderStatus##)/g, "申请退款中");
+				text = text.replace(/(orderStatus##)/g, "Refunding");
 			}else if (data.status == "10") {
-				text = text.replace(/(orderStatus##)/g, "管理员同意退款");
+				text = text.replace(/(orderStatus##)/g, "Administrator confirmed to refund");
 			} else if (data.status == "11") {
-				text = text.replace(/(orderStatus##)/g, "退款完成");
+				text = text.replace(/(orderStatus##)/g, "Refunding completed");
 			}else{
 				text = text.replace(/(orderStatus##)/g, "");
 			}
@@ -152,7 +152,7 @@
 			if (data.reserveTime != null) {
 				text = text.replace(/(reserveTime##)/g, data.reserveTime);
 			} else {
-				text = text.replace(/(reserveTime##)/g, "立即送达");
+				text = text.replace(/(reserveTime##)/g, "Delivered immediately");
 			}
 			$("#list_items").append(text);
 
@@ -198,7 +198,7 @@
 			date = "0" + date;
 		//写入相应id
 
-		return year + "年" + (month) + "月" + date + "日";
+		return year + "year" + (month) + "month" + date + "day";
 	}
 </script>
 </body>

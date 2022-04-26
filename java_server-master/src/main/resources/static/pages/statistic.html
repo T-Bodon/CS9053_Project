@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>热销商品统计</title>
+<title>Hot Products Analysis</title>
 </head>
 <body>
 <div id="containerMonth" style="min-width: 800px; height: 400px;"></div>
@@ -68,15 +68,15 @@ $(function() {
 			},
 			yAxis : {
 				title : {
-					text : '销售量'
+					text : 'Sales'
 				}
 			},
 			series : [ {
-				name : '过去一个月热销',
+				name : 'Hot products for last month',
 				data : seriesData
 			} ],
 			lang : {
-				noData:'抱歉，无法获取过去一个月热销数据'
+				noData:'Cannot get hot products info'
 			}
 		});
 

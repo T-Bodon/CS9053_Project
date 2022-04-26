@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>用户管理</title>
+<title>User Management</title>
 <link rel="stylesheet"
 	href="../assets/bootstrap-table/bootstrap.min.css">
 <link rel="stylesheet"
@@ -42,10 +42,10 @@
 <body>
 	<div class="container">
 		<div class="page-header">
-			<h1>用户管理&nbsp;&nbsp;</h1>
+			<h1>User Management&nbsp;&nbsp;</h1>
 		</div>
 		<div style="text-align: center;">
-			<span id="operate-success">设置成功</span>
+			<span id="operate-success">Set Successfully</span>
 		</div>
 		<div>
 			<table id="table" data-toggle="table" data-show-export="false"
@@ -55,15 +55,15 @@
 				<thead>
 					<tr>
 						<!-- <th data-field="state" data-checkbox="true"></th> -->
-						<th data-field="phone">手机号</th>
-						<th data-field="nickname">昵称</th>
-						<th data-field="type">权限</th>
-						<th data-field="createTime">注册时间</th>
-						<th data-field="lastLoginDate">最后登录时间</th>
-						<th data-field="defaultAddress">默认地址</th>
-						<th data-field="type" data-formatter="typeFormatter">用户类型</th>
+						<th data-field="phone">Phone</th>
+						<th data-field="nickname">Nickname</th>
+						<th data-field="type">Type</th>
+						<th data-field="createTime">CreateTime</th>
+						<th data-field="lastLoginDate">Last Login Date</th>
+						<th data-field="defaultAddress">Default Address</th>
+						<th data-field="type" data-formatter="typeFormatter">User type</th>
 						<th data-field="action" data-formatter="actionFormatter"
-							data-events="actionEvents">权限修改</th>
+							data-events="actionEvents">Modify permissions</th>
 					</tr>
 				</thead>
 			</table>
@@ -90,16 +90,16 @@
 			}, 2000);
 		}
 		function typeFormatter(value, row, index) {
-			var type = "未定义";
+			var type = "Undefined";
 			switch (value) {
 			case 0:
-				type = "分派员";
+				type = "Dispatcher";
 				break;
 			case 1:
-				type = "配送员";
+				type = "Deliveryman";
 				break;
 			case 2:
-				type = "普通用户";
+				type = "Client";
 				break;
 			}
 			return type;
@@ -108,18 +108,18 @@
 			if (adminType == 0) {
 				//当前角色是校区管理员
 				return [
-						'<a class="admin ml8" href="javascript:void(0)" title="设为配送员">',
+						'<a class="admin ml8" href="javascript:void(0)" title="Set to deliveryman">',
 						'&nbsp;<i class="glyphicon glyphicon-heart-empty"></i>&nbsp;',
 						'</a>',
-						'<a class="common ml8" href="javascript:void(0)" title="设为普通用户">',
+						'<a class="common ml8" href="javascript:void(0)" title="Set to client">',
 						'&nbsp;<i class="glyphicon glyphicon-user"></i>&nbsp;',
 						'</a>',
-						'<a class="superAdmin ml8" href="javascript:void(0)" title="设置分派员">',
+						'<a class="superAdmin ml8" href="javascript:void(0)" title="Set dispatcher">',
 						'&nbsp;<i class="glyphicon glyphicon-heart"></i>&nbsp;',
 						'</a>' ].join('');
 			} else if (adminType == 1) {
 				//当前角色是总校区管理员
-				return "无权操作";
+				return "Not authorized to operate";
 			}
 		}
 		window.actionEvents = {
@@ -131,9 +131,9 @@
                     server:"56846a8a2fee49d14901d39cc48b8b2a"
 				}, function(text) {
 					if (text == -1 || text == 0) {
-						setSuccess("设置配送员失败。");
+						setSuccess("Set deliveryman failed");
 					} else {
-						setSuccess("设置配送员成功。");
+						setSuccess("Set deliveryman successed");
 						$('#table').bootstrapTable('updateRow', {
 							index : index,
 							row : {
@@ -153,9 +153,9 @@
 					server:"56846a8a2fee49d14901d39cc48b8b2a"
 				}, function(text) {
 					if (text == -1 || text == 0) {
-						setSuccess("设置为普通用户失败。");
+						setSuccess("Set client failed");
 					} else {
-						setSuccess("设置为普通用户成功。");
+						setSuccess("Set client successed");
 						$('#table').bootstrapTable('updateRow', {
 							index : index,
 							row : {
@@ -175,9 +175,9 @@
 					server:"56846a8a2fee49d14901d39cc48b8b2a"
 				}, function(text) {
 					if (text == -1 || text == 0) {
-						setSuccess("设置分派员失败。");
+						setSuccess("Set dispatcher failed");
 					} else {
-						setSuccess("设置分派员成功。");
+						setSuccess("Set dispatcher successed");
 						$('#table').bootstrapTable('updateRow', {
 							index : index,
 							row : {
