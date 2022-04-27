@@ -5,9 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
-/**
- * Created by zhengzhihao on 2017/6/29.
- */
+
 @Configuration
 public class WebConfigure extends WebMvcConfigurerAdapter {
 
