@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>搜索标签管理</title>
+<title>Search Tag Management</title>
 <link rel="stylesheet"
 	href="../assets/bootstrap-table/bootstrap.min.css">
 <link rel="stylesheet"
@@ -27,7 +27,7 @@
 	<div class="container">
 		<div class="row-fluid">
 			<div class="page-header">
-				<h2>搜索标签管理<small>&nbsp;&nbsp;网站搜索框下的热门搜索</small></h2>
+				<h2>Search Tag Management<small>&nbsp;&nbsp;Top searches under the site search box</small></h2>
 			</div>
 			<div class="row">
 				<div id="toolbar" class="btn-group">
@@ -51,10 +51,10 @@
 						<tr>
 							<th data-field="state" data-checkbox="true"></th>
 							<th data-field="hotId" data-visible="false">#</th>
-							<th data-field="displayName">显示名称</th>
-							<th data-field="searchTag">搜索标签</th>
-							<th  data-field="hehe" data-formatter="displayFormatter">是否显示</th>
-							<th  data-field="isDisplay" data-formatter="actionFormatter" data-events="actionEvents">显示操作</th>
+							<th data-field="displayName">Show name</th>
+							<th data-field="searchTag">Search tags</th>
+							<th  data-field="hehe" data-formatter="displayFormatter">Whether to display</th>
+							<th  data-field="isDisplay" data-formatter="actionFormatter" data-events="actionEvents">Show action</th>
 						</tr>
 					</thead>
 				</table>
@@ -68,7 +68,7 @@
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal"
 						aria-hidden="true">&times;</button>
-						<h3 class="modal-title" id="tagName">添加标签</h3>
+						<h3 class="modal-title" id="tagName">Add tag</h3>
 					</div>
 
 					<form id="hotSearchData" class="form-horizontal">
@@ -81,23 +81,23 @@
 							</div>
 
 						    <div class="form-group">
-								<label for="displayName" class="col-sm-2 control-label">标签名称</label>
+								<label for="displayName" class="col-sm-2 control-label">Tag Name</label>
 								<div class="col-sm-8">
-									<input type="text" class="form-control" name="dispalyName" id="dispalyName" placeholder="标签名称" required>
+									<input type="text" class="form-control" name="dispalyName" id="dispalyName" placeholder="Tag Name" required>
 								</div>
 							</div>
 
 							<div class="form-group">
-								<label for="searchTag" class="col-sm-2 control-label">搜索字段</label>
+								<label for="searchTag" class="col-sm-2 control-label">Search Field</label>
 								<div class="col-sm-8">
-									<input type="text" class="form-control" name="searchTag" id="searchTag" placeholder="搜索字段" required>
+									<input type="text" class="form-control" name="searchTag" id="searchTag" placeholder="Search Field" required>
 								</div>
 							</div>
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+							<button type="button" class="btn btn-default" data-dismiss="modal">close
 							</button>
-							<button type="button" class="btn btn-primary" onclick="submitHotSearchData();">提交更改</button>
+							<button type="button" class="btn btn-primary" onclick="submitHotSearchData();">Submit revision</button>
 						</div>	
 					</form>
 				</div>
@@ -122,7 +122,7 @@
                  	function(data){
  						if(data.status=="success"){
  							$('#info').show();
-		               		$('#info').html("操作成功");
+		               		$('#info').html("Successful operation");
 		             		setTimeout("$('#info').hide()", 2000 );
 		             		$('#hotSearchModal').modal('hide');
 
@@ -130,7 +130,7 @@
 		             		
  						}else{
  							$('#info').show();
-		               		$('#info').html("操作失败");
+		               		$('#info').html("operation failed");
 		             		setTimeout("$('#info').hide()", 2000 );
  						}
                  	},'json'
@@ -141,13 +141,13 @@
 				if(value==1){
 					return [
 				       '<a class="not-display" herf="javascript:void(0)" title="close">',
-				       '不显示',
+				       'Do not show',
 				       '</a>'
 				     ].join('');
 				}else{
 					return [
 				       '<a class="to-display" herf="javascript:void(0)" title="open">',
-				       '显示',
+				       'Show',
 				       '</a>'
 				     ].join('');
 				}
@@ -155,9 +155,9 @@
 			function displayFormatter(value, row, index) {
 				
 				if(row.isDisplay==1){
-					return "是";
+					return "yes";
 				}else{
-					return "否"
+					return "no"
 				}
 			}
 
@@ -171,7 +171,7 @@
 					var array = $table.bootstrapTable('getSelections');
 					if(array.length>1){
 						$('#info').show();
-               			$('#info').html("不可以同时编辑多条数据");
+               			$('#info').html("Multiple pieces of data cannot be edited at the same time!");
              			setTimeout("$('#info').hide()", 2000 );
 						return;
 					}
@@ -180,16 +180,16 @@
 					$('#searchTag').val(array[0].searchTag);
 					$('#dispalyName').val(array[0].displayName);
                    $('#hotSearchModal').modal('show');
-    			   $('#tagName').text('编辑标签');
+    			   $('#tagName').text('Edit tags');
 
 				});
 
 				$('#delete').on('click',function(){
-					if(confirm('是否确定删除')){
+					if(confirm('Are you sure you want to delete?')){
 						var array = $table.bootstrapTable('getSelections');
 						if(array.length==0){
 							$('#info').show();
-	               			$('#info').html("请选中一条记录");
+	               			$('#info').html("Please select a record");
 	             			setTimeout("$('#info').hide()", 2000 );
 							return;
 						}
@@ -203,12 +203,12 @@
            				  function(data){
            				  	 if(data.status=="success"){
            				  	 	$('#info').show();
-		               			$('#info').html("删除成功");
+		               			$('#info').html("Successfully deleted");
 		             			setTimeout("$('#info').hide()", 2000 );
 		             			$('#table').bootstrapTable('refresh', {silent: true});
            				  	 }else{
            				  	 	$('#info').show();
-		               			$('#info').html("删除失败");
+		               			$('#info').html("Failed to delete");
 		             			setTimeout("$('#info').hide()", 2000 );
            				  	 }
            				  },'json'
@@ -232,11 +232,11 @@
                function(data){
                   if(data.status=="failure"){
                       $('#info').show();
-		              $('#info').html("操作失败");
+		              $('#info').html("operation failed");
 		              setTimeout("$('#info').hide()", 2000 );
                  }else{
                 	 $('#info').show();
-		             $('#info').html("操作成功");
+		             $('#info').html("Successful operation");
 		             setTimeout("$('#info').hide()", 2000 );
                      $('#table').bootstrapTable('refresh', {silent: true});
                  }
@@ -251,11 +251,11 @@
                function(data){
                   if(data.status=="failure"){
                       $('#info').show();
-		              $('#info').html("操作失败");
+		              $('#info').html("operation failed");
 		              setTimeout("$('#info').hide()", 2000 );
                  }else{
                 	 $('#info').show();
-		             $('#info').html("操作成功");
+		             $('#info').html("Successful operation");
 		             setTimeout("$('#info').hide()", 2000 );
                      $('#table').bootstrapTable('refresh', {silent: true});
                  }

@@ -2,8 +2,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>校区管理</title>
-<title>校区管理</title>
+<title>Campus Management</title>
+<title>Campus Management</title>
 <link rel="stylesheet"
 	href="../assets/bootstrap-table/bootstrap.min.css">
 <link rel="stylesheet"
@@ -29,7 +29,7 @@
 	<div class="container">
 		<div class="row-fluid">
 			<div class="page-header span2">
-				<h1>校区管理</h1>
+				<h1>Campus Management</h1>
 			</div>
 			<div class="span10">
 				<div id="toolbar" class="btn-group">
@@ -43,7 +43,7 @@
 						<i class="glyphicon glyphicon-minus"></i>
 					</button>
 					<button id="add_city" type="button" class="btn btn-primary">
-						添加城市
+						Add City
 					</button>
 				</div>
 				<table id="table" data-toggle="table"
@@ -55,14 +55,14 @@
 					<thead>
 						<tr>
 							<th data-field="state" data-checkbox="true"></th>
-							<th data-field="campusId" data-visible="false">校区ID</th>
-							<th data-field="campusName">校区名称</th>
-							<th data-field="cityId" data-visible="false">城市ID</th>
-							<th data-field="cityName">所在城市</th>
-							<th data-field="openTime">开店时间</th>
-							<th data-field="closeTime">关店时间</th>
-							<th data-field="status" data-formatter="statusFormatter">状态</th>
-							<th data-field="customService">客服电话</th>
+							<th data-field="campusId" data-visible="false">Campus ID</th>
+							<th data-field="campusName">Campus Name</th>
+							<th data-field="cityId" data-visible="false">City ID</th>
+							<th data-field="cityName">City</th>
+							<th data-field="openTime">Open Time</th>
+							<th data-field="closeTime">Close Time</th>
+							<th data-field="status" data-formatter="statusFormatter">Status</th>
+							<th data-field="customService">Consumer Hotline</th>
 						</tr>
 					</thead>
 				</table>
@@ -77,22 +77,22 @@
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
 							&times;
 						</button>
-						<h4 class="modal-title" id="myPlusModalLabel">添加校区</h4>
+						<h4 class="modal-title" id="myPlusModalLabel">Add campus</h4>
 					</div>
 					<div class="modal-body">
 						<form id="plus_campus_form"class="form-horizontal" role="form">
 							<div class="form-group">
-								<label for="plus_campus_name" class="col-sm-2 control-label">校区名称</label>
+								<label for="plus_campus_name" class="col-sm-2 control-label">Campus Name</label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control" id="plus_campus_name" name="campusName" placeholder="校区名称">
+									<input type="text" class="form-control" id="plus_campus_name" name="campusName" placeholder="Campus Name">
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="plus_city_name" class="col-sm-2 control-label">城市名称</label>
+								<label for="plus_city_name" class="col-sm-2 control-label">City</label>
 								<div class="col-sm-10">
 									<div class="dropdown">
 										<button type="button" class="dropdown-toggle btn btn-default" style="width:100%;" data-toggle="dropdown" id="plus_city_name">
-											<span id="span_plus_city_name">城市</span>
+											<span id="span_plus_city_name">City</span>
 											<b class="caret" style="float:right;margin-top:8px"></b>
 										</button>
 										<ul class="dropdown-menu"  style="width:100%">
@@ -102,46 +102,46 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="plus_open_time" class="col-sm-2 control-label">开店时间</label>
+								<label for="plus_open_time" class="col-sm-2 control-label">Open Time</label>
 								<div class="col-sm-10">
 									<input type="text" class="form-control" id="plus_open_time" name="openTime"placeholder="例06:00">
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="plus_close_time" class="col-sm-2 control-label">关店时间</label>
+								<label for="plus_close_time" class="col-sm-2 control-label">Close Time</label>
 								<div class="col-sm-10">
 									<input type="text" class="form-control" id="plus_close_time"name="closeTimeoep" placeholder="例23:00">
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="plus_status" class="col-sm-2 control-label">状态</label>
+								<label for="plus_status" class="col-sm-2 control-label">Status</label>
 								<div class="col-sm-10">
 									<!-- <input type="text" class="form-control" id="plus_status" placeholder="状态"> -->
 									<div class="dropdown">
 										<button type="button" class="dropdown-toggle btn btn-default" style="width:100%;" data-toggle="dropdown" id="plus_status">
-											<span id="span_plus_status">状态</span>
+											<span id="span_plus_status">Status</span>
 											<b class="caret" style="float:right;margin-top:8px"></b>
 										</button>
 										<ul class="dropdown-menu"  style="width:100%">
 											<li role="presentation">
-												<a role="menuitem" tabindex="-1" style="text-align:center" href="javascript:void(0)">营业</a>
+												<a role="menuitem" tabindex="-1" style="text-align:center" href="javascript:void(0)">Open</a>
 											</li>
 											<li role="presentation">
-												<a role="menuitem" tabindex="-1" style="text-align:center" href="javascript:void(0)">休息</a>
+												<a role="menuitem" tabindex="-1" style="text-align:center" href="javascript:void(0)">Break</a>
 											</li>
 										</ul>
 									</div>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="plus_custom_service" class="col-sm-2 control-label">客服电话</label>
+								<label for="plus_custom_service" class="col-sm-2 control-label">Consumer Hotline</label>
 								<div class="col-sm-10">
-									<input type="number" class="form-control" id="plus_custom_service" placeholder="客服电话">
+									<input type="number" class="form-control" id="plus_custom_service" placeholder="Consumer Hotline">
 								</div>
 							</div>
 							<div class="modal-footer">
-								<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-								<button type="button" class="btn btn-primary" onclick="plusSubmit()">提交更改</button>
+								<button type="button" class="btn btn-default" data-dismiss="modal">Closed</button>
+								<button type="button" class="btn btn-primary" onclick="plusSubmit()">Submit revision</button>
 							</div>
 						</form>
 					</div>
@@ -159,21 +159,21 @@
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
 							&times;
 						</button>
-						<h4 class="modal-title" id="myDeleteModalLabel">关闭校区</h4>
+						<h4 class="modal-title" id="myDeleteModalLabel">Close campus</h4>
 					</div>
 					<div class="modal-body">
 						<form class="form-horizontal" role="form">
 							<div class="form-group">
-								<label for="delete_campus_name" class="col-sm-2 control-label">校区名称</label>
+								<label for="delete_campus_name" class="col-sm-2 control-label">Campus name</label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control" id="delete_campus_name" placeholder="校区名称" readonly>
+									<input type="text" class="form-control" id="delete_campus_name" placeholder="Campus name" readonly>
 								</div>
 							</div>
 						</form>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-						<button type="submit" class="btn btn-primary" onclick="deleteSubmit()">提交更改</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">close</button>
+						<button type="submit" class="btn btn-primary" onclick="deleteSubmit()">Submit revision</button>
 					</div>
 				</div><!-- /.modal-content -->
 			</div><!-- /.modal -->
@@ -188,28 +188,28 @@
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
 							&times;
 						</button>
-						<h4 class="modal-title" id="myEditModalLabel">修改校区</h4>
+						<h4 class="modal-title" id="myEditModalLabel">Revise campus</h4>
 					</div>
 					<div class="modal-body">
 						<form id="edit-campus-form" class="form-horizontal" role="form">
 							<div class="form-group none">
-								<label for="edit_campus_id" class="col-sm-2 control-label">校区ID</label>
+								<label for="edit_campus_id" class="col-sm-2 control-label">Campus ID</label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control" id="edit_campus_id" placeholder="校区ID" readonly>
+									<input type="text" class="form-control" id="edit_campus_id" placeholder="Campus ID" readonly>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="edit_campus_name" class="col-sm-2 control-label">校区名称</label>
+								<label for="edit_campus_name" class="col-sm-2 control-label">Campus Name</label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control" id="edit_campus_name" placeholder="校区名称">
+									<input type="text" class="form-control" id="edit_campus_name" placeholder="Campus Name">
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="edit_city_name" class="col-sm-2 control-label">城市名称</label>
+								<label for="edit_city_name" class="col-sm-2 control-label">City</label>
 								<div class="col-sm-10">
 									<div class="dropdown">
 										<button type="button" class="dropdown-toggle btn btn-default" style="width:100%;" data-toggle="dropdown" id="edit_city_name">
-											<span id="span_edit_city_name">城市</span>
+											<span id="span_edit_city_name">City</span>
 											<b class="caret" style="float:right;margin-top:8px"></b>
 										</button>
 										<ul class="dropdown-menu"  style="width:100%">
@@ -219,46 +219,46 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="edit_open_time" class="col-sm-2 control-label">开店时间</label>
+								<label for="edit_open_time" class="col-sm-2 control-label">Open Time</label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control" id="edit_open_time" placeholder="开店时间">
+									<input type="text" class="form-control" id="edit_open_time" placeholder="Open Time">
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="edit_close_time" class="col-sm-2 control-label">关店时间</label>
+								<label for="edit_close_time" class="col-sm-2 control-label">Close Time</label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control" id="edit_close_time" placeholder="关店时间">
+									<input type="text" class="form-control" id="edit_close_time" placeholder="Close Time">
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="edit_status" class="col-sm-2 control-label">状态</label>
+								<label for="edit_status" class="col-sm-2 control-label">Status</label>
 								<div class="col-sm-10">
 									<!-- <input type="text" class="form-control" id="edit_status" placeholder="状态"> -->
 									<div class="dropdown">
 										<button type="button" class="dropdown-toggle btn btn-default" style="width:100%;" data-toggle="dropdown" id="edit_status">
-											<span id="span_edit_status">状态</span>
+											<span id="span_edit_status">Status</span>
 											<b class="caret" style="float:right;margin-top:8px"></b>
 										</button>
 										<ul class="dropdown-menu"  style="width:100%">
 											<li role="presentation">
-												<a role="menuitem" tabindex="-1" style="text-align:center" href="javascript:void(0)">营业</a>
+												<a role="menuitem" tabindex="-1" style="text-align:center" href="javascript:void(0)">Open</a>
 											</li>
 											<li role="presentation">
-												<a role="menuitem" tabindex="-1" style="text-align:center" href="javascript:void(0)">休息</a>
+												<a role="menuitem" tabindex="-1" style="text-align:center" href="javascript:void(0)">Break</a>
 											</li>
 										</ul>
 									</div>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="edit_custom_service" class="col-sm-2 control-label">客服</label>
+								<label for="edit_custom_service" class="col-sm-2 control-label">Hotline</label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control" id="edit_custom_service" placeholder="客服">
+									<input type="text" class="form-control" id="edit_custom_service" placeholder="Hotline">
 								</div>
 							</div>
 							<div class="modal-footer">
-								<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-								<button type="submit" class="btn btn-primary" onclick="editSubmit()">提交更改</button>
+								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								<button type="submit" class="btn btn-primary" onclick="editSubmit()">Submit Revision</button>
 							</div>
 						</form>
 					</div>
@@ -276,21 +276,21 @@
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
 							&times;
 						</button>
-						<h4 class="modal-title" id="myAddCityModalLabel">添加城市</h4>
+						<h4 class="modal-title" id="myAddCityModalLabel">Add City</h4>
 					</div>
 					<div class="modal-body">
 						<form class="form-horizontal" role="form">
 							<div class="form-group">
-								<label for="addcity_city_name" class="col-sm-2 control-label">城市名称</label>
+								<label for="addcity_city_name" class="col-sm-2 control-label">City</label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control" id="addcity_city_name" placeholder="城市名称">
+									<input type="text" class="form-control" id="addcity_city_name" placeholder="City">
 								</div>
 							</div>
 						</form>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-						<button type="button" class="btn btn-primary" onclick="addCitySubmit()">提交更改</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary" onclick="addCitySubmit()">Submit Revision</button>
 					</div>
 				</div><!-- /.modal-content -->
 			</div><!-- /.modal -->
@@ -310,7 +310,7 @@
 		//可供调用方法
 		$.validator.addMethod("time", function(value, element) {
 		    return this.optional(element) || /^\d{1,2}:\d{2}$/.test(value);
-		},"时间格式不正确，请检查是否有中文字符");
+		},"The time format is incorrect, please check!");
 
 		$("#plus_campus_form").validate({
 			rules:{
@@ -328,13 +328,13 @@
 			},
 			messages:{
 				campusName:{
-					required: "校区名称必须",
+					required: "Campus name required",
 				},
 				openTime:{
-					required: "开店时间必须",			   
+					required: "Open time required",
 				},
 				closeTime:{
-					required: "关店时间必须",
+					required: "Close time required",
 				}
 			}
 		});
@@ -344,12 +344,12 @@
 			switch(value){
 			case 0:
 				html=[			
-					'休息中',	
+					'Breaking',
 				];
 				break;
 			case 1:
 				html=[
-					'营业中',
+					'Opening',
 				];
 				break;
 			}
@@ -385,9 +385,9 @@
 		$editButton.click(function(){
 			var array = $table.bootstrapTable('getSelections');
 			if(array.length == 0){
-				alert("不能选中多条记录");
+				alert("Multiple records cannot be selected");
 			}else if(array.length > 1){
-				alert("请先选中某条记录");
+				alert("Please select a record first");
 			}else{
 				//城市列表
 				//先清空上次请求的内容
@@ -415,9 +415,9 @@
 				$("#edit_open_time").val(array[0].openTime);
 				$("#edit_close_time").val(array[0].closeTime);
 				if(array[0].status==0){
-					$("#span_edit_status").text("休息");
+					$("#span_edit_status").text("Break");
 				}else if(array[0].status==1){
-					$("#span_edit_status").text("营业");
+					$("#span_edit_status").text("Open");
 				}
 				$("#edit_custom_service").val(array[0].customService);
 				
@@ -428,9 +428,9 @@
 		$deleteButton.click(function(){
 			var array = $table.bootstrapTable('getSelections');
 			if(array.length>1){
-				alert("不能选中多条记录");
+				alert("Multiple records cannot be selected");
 			}else if(array.length==0){
-				alert("请先选中某条记录");	
+				alert("Please select a record first");
 			}else{
 				$("#delete_campus_name").val(array[0].campusName);
 				$("#deleteModal").modal('show');
@@ -455,15 +455,15 @@
 			
 			//判空
 			if(!campusName||!cityName||!openTime||!closeTime||!status||!customService){
-				alert("对不起，请补填未填写的地方！");
+				alert("Sorry, please fill in the blank!");
 				return;
 			}
 			
 			//alert(cityName);
 			//status值是“休息”或“营业”，要转换成0或1
-			if(status=="休息"){
+			if(status=="Open"){
 				status = 0;
-			}else if(status == "营业"){
+			}else if(status == "Break"){
 				status=1;
 			}
 			
@@ -492,13 +492,13 @@
 			
 			//判空
 			if(!campusId||!campusName||!cityName||!openTime||!closeTime||!status||!customService){
-				alert("对不起，请补填未填写的地方！");
+				alert("Sorry, please fill in the blank！");
 				return;
 			}
 			
-			if(status=="休息"){
+			if(status=="Break"){
 				status = 0;
-			}else if(status == "营业"){
+			}else if(status == "Open"){
 				status=1;
 			}
 			$.post("../campus/updateCampus",{
@@ -521,7 +521,7 @@
 			var array = $table.bootstrapTable('getSelections');
             console.log(array);
 			$.post("../campus/closeCampus",
-				{campusId:array[0].campusId,closeReason:"该校区已暂停营业,对您造成不便深感抱歉",status:0,server:"56846a8a2fee49d14901d39cc48b8b2a"},
+				{campusId:array[0].campusId,closeReason:"The campus has been closed, sorry for the inconvenience",status:0,server:"56846a8a2fee49d14901d39cc48b8b2a"},
 				function(data){
 					if(data.status=="success"){
 						alert(data.message);
@@ -536,7 +536,7 @@
 			var cityName = $("#addcity_city_name").val();
 			
 			if(!cityName){
-				alert("对不起，请补填未填写的地方！");
+				alert("Sorry, please fill in the blank!");
 				return;
 			}
 			

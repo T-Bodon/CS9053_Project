@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>无标题文档</title>
+	<title></title>
 	<link rel="stylesheet"
 	href="../assets/bootstrap-table/bootstrap.min.css">
 <link rel="stylesheet"
@@ -29,7 +29,7 @@
 		<div class="container">
 			<div class="row-fluid">
 				<div class="page-header">
-					<h1>商品分类管理</h1>
+					<h1>Product classification management</h1>
 				</div>
 
 				<div id="toolbar" class="btn-group">
@@ -54,17 +54,17 @@
 					<thead>
 						<tr>
 							<th data-field="state" data-checkbox="true"></th>
-							<th data-align="center" data-field="foodId">商品Id</th>
-							<th data-align="center" data-field="name">昵称</th>
-							<th data-align="center" data-field="price">商品价格</th>
+							<th data-align="center" data-field="foodId">Product Id</th>
+							<th data-align="center" data-field="name">Nick name</th>
+							<th data-align="center" data-field="price">Product Price</th>
 							<th data-align="center" data-field="discountPrice"
 
-							data-sortable="true">折扣价</th>
-							<th data-align="center" data-field="status" data-sortable="true">商品状态</th>
+							data-sortable="true">Discount price</th>
+							<th data-align="center" data-field="status" data-sortable="true">Product Status</th>
 							<th data-align="center" data-field="primePrice"
-								data-sortable="true">成本价</th>
+								data-sortable="true">Cost Price</th>
 							<th data-align="center" data-field="foodFlag"
-							data-sortable="true">商品标签</th>
+							data-sortable="true">Product Label</th>
 						</tr>
 					</thead>
 				</table>
@@ -80,64 +80,64 @@
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal"
 				aria-hidden="true">&times;</button>
-				<h3 class="modal-title" id="myModalLabel">添加商品</h3>
+				<h3 class="modal-title" id="myModalLabel">Adding product</h3>
 			</div>
 			<div class="modal-body">
 				<form class="form-horizontal">
 					<div class="control-group">
-						<label class="control-label" for="foodId">商品Id</label>
+						<label class="control-label" for="foodId">Product Id</label>
 						<div class="controls">
 							<input type="text" id="foodId" placeholder="Food Id">
 						</div>
 					</div>
 					<div class="control-group">
-						<label class="control-label" for="foodName">商品名称</label>
+						<label class="control-label" for="foodName">Product Name</label>
 						<div class="controls">
 							<input type="text" id="foodName" placeholder="Food Name">
 						</div>
 					</div>
 					<div class="control-group">
-						<label class="control-label" for="price">商品价格</label>
+						<label class="control-label" for="price">Product Price</label>
 						<div class="controls">
 							<input type="text" id="price" placeholder="Present Price">
-							<span class="add-on">￥</span>
+							<span class="add-on">$</span>
 						</div>
 						<div class="control-group">
-							<label class="control-label" for="discountPrice">折扣价</label>
+							<label class="control-label" for="discountPrice">Discount price</label>
 							<div class="controls">
 								<input type="text" id="discountPrice"
-									placeholder="Discount Price"> <span class="add-on">￥</span>
+									placeholder="Discount Price"> <span class="add-on">$</span>
 							</div>
 						</div>
 						<div class="control-group">
-							<label class="control-label" for="primeCost">成本价</label>
+							<label class="control-label" for="primeCost">Cost price</label>
 							<div class="controls">
 								<input type="text" id="primeCost" placeholder="Prime Cost">
-								<span class="add-on">￥</span>
+								<span class="add-on">$</span>
 							</div>
 						</div>
 					</div>
 					<div class="control-group">
-						<label class="control-label" for="foodTag">商品标签</label>
+						<label class="control-label" for="foodTag">Product Label</label>
 						<div class="controls">
-							<input type="text" id="foodTag" placeholder="商品标签之间请以逗号隔开">
+							<input type="text" id="foodTag" placeholder="Please separate product labels with commas">
 						</div>
 						</div>
 					<div class="control-group">
-						<label class="control-label" for="status">商品状态</label>
+						<label class="control-label" for="status">Product status</label>
 						<div class="controls">
 							<label class="radio inline"> <input type="radio"
-								name="optionsRadios" id="status" value="1" checked> 上架
+								name="optionsRadios" id="status" value="1" checked> In stock
 							</label> <label class="radio inline"> <input type="radio"
-							name="optionsRadios" id="status2" value="0"> 下架
+							name="optionsRadios" id="status2" value="0"> Out stock
 						</label>
 					</div>
 
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+					<button type="button" class="btn btn-default" data-dismiss="modal">close
 					</button>
-					<button type="button" class="btn btn-primary">提交更改</button>
+					<button type="button" class="btn btn-primary">submit revision</button>
 				</div>
 			</div>
 			<!-- /.modal-content -->
@@ -174,11 +174,11 @@
 			var array = $table.bootstrapTable('getSelections');
 
 			if (array.length > 1) {
-				alert("编辑操作不能同时选中多条记录！");
+				alert("Edit operation cannot select multiple records at the same time！");
 			} else if (array.length == 0) {
-				alert("请先选中某条记录！");
+				alert("Please select a record first！");
 			} else {
-				$("#myModalLabel").text("编辑商品");
+				$("#myModalLabel").text("Edit item");
 				$("#myModal").modal('show');
 
 			}
@@ -187,7 +187,7 @@
 
 	$(function() {
 		$plusButton.click(function() {
-			$("#myModalLabel").text("添加商品");
+			$("#myModalLabel").text("Adding product");
 			$("#myModal").modal('show');
 		});
 	});

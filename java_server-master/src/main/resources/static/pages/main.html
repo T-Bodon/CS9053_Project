@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>首页</title>
+	<title>Homepage</title>
 	<link rel="stylesheet" href="../css/bootstrap.min.css">
 	<link rel="stylesheet" href="../css/bootstrap-table.min.css">
 	<link rel="shortcut icon" href="img/icon.png">
@@ -21,20 +21,20 @@
 		<div class="row-fluid">
 			<div class="page-header">
 				<h1>
-					首页
+					Homepage
 				</h1>
 			</div>
 			<div style="text-align:center;">
     			<span id="operate-success">
-        			设置成功
+        			Set successfully
     			</span>
 			</div>
 			
 			<div>
 				<ul id="myTab" class="nav nav-pills" role="tablist">
 
-					<li class="active"><a href="#statistic" role="tab" data-toggle="tab">销量分析</a></li>
-					<li><a href="#statictic1" role="tab" data-toggle="tab">销售额分析</a></li>
+					<li class="active"><a href="#statistic" role="tab" data-toggle="tab">Sales Analysis</a></li>
+					<li><a href="#statictic1" role="tab" data-toggle="tab">Revenue Analysis</a></li>
 				</ul>
 			</div>
 			<!-- 选项卡面板 -->
@@ -124,15 +124,15 @@ $(function() {
 			},
 			yAxis : {
 				title : {
-					text : '销售量'
+					text : 'Sales'
 				}
 			},
 			series : [ {
-				name : '过去一个月热销',
+				name : 'Popular in the past month',
 				data : seriesData
 			} ],
 			lang : {
-				noData:'抱歉，无法获取过去一个月热销数据'
+				noData:'Sorry, the top sales data for the past month is not available'
 			}
 		});
 
