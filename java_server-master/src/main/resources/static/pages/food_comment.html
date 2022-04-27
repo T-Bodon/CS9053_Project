@@ -3,7 +3,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>商品评价</title>
+	<title>Product Comments</title>
 	<link rel="stylesheet" href="../css/bootstrap.min.css">
 	<link rel="stylesheet" href="../css/bootstrap-table.min.css">
 	 <link rel="shortcut icon" href="img/icon.png">
@@ -41,7 +41,7 @@
     		    		'</a>'
     		    		].join('');
     		}else if(adminType==1){
-    			return "无操作权限";
+    			return "No operation permission";
     		}
     	}
 
@@ -57,7 +57,7 @@
     			},
     			function(text){
     				if(text!=1){
-    					alert("删除评价失败");
+    					alert("Delete comments failed");
     				}else{
     					$('#table').bootstrapTable('refresh', {silent: true,query: {foo:'bar'}});
     				}
@@ -81,7 +81,7 @@
     		<div class="row-fluid">
     			<div class="page-header">
     				<h1>
-    					商品评价管理
+    					Products Comments Management
     				</h1>
     			</div>
     			<div>
@@ -98,13 +98,13 @@
     				>
     				<thead>
     					<tr>
-    						<th data-align="left" data-field="foodId" data-sortable="true">商品Id</th>
-    						<th data-align="left" data-field="foodName">商品名称</th>
-    						<th data-align="left" data-field="date" data-sortable="true">评论时间</th>
-    						<th data-align="left" data-field="nickName" >评论人</th>
-    						<th data-align="left" data-field="grade" data-sortable="true">评分</th>
-    						<th data-align="left" data-field="comment">内容</th>
-    						<th data-align="left" data-field="action" data-formatter="actionFormatter" data-events="actionEvents">删除评价</th>
+    						<th data-align="left" data-field="foodId" data-sortable="true">Products Id</th>
+    						<th data-align="left" data-field="foodName">Product Name</th>
+    						<th data-align="left" data-field="date" data-sortable="true">Comments Time</th>
+    						<th data-align="left" data-field="nickName" >Comment From</th>
+    						<th data-align="left" data-field="grade" data-sortable="true">Rating</th>
+    						<th data-align="left" data-field="comment">Content</th>
+    						<th data-align="left" data-field="action" data-formatter="actionFormatter" data-events="actionEvents">Delete Comment</th>
     					</tr>
     				</thead>
     			</table>
