@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>分类管理</title>
+	<title>Category Management</title>
 	<link rel="stylesheet"
 	href="../assets/bootstrap-table/bootstrap.min.css">
     <link rel="stylesheet"
@@ -26,12 +26,12 @@
 			<div class="container">
 				<div class="row-fluid">
 					<div class="page-header">
-						<h1>商品分类管理</h1>
+						<h1>Product Category Management</h1>
 					</div>
 					
 					<div style="text-align:center;">
 						<span id="operate-success">
-    						设置成功
+    						Set Successfully
     					</span>
 					</div>
 					
@@ -60,10 +60,10 @@
 					<thead>
 						<tr>
 							<th data-field="state" data-checkbox="true"></th>
-							<th data-align="center" data-field="categoryId" data-visible="false">商品分类Id</th>
-							<th data-align="center" data-field="category">分类名称</th>
-							<th data-align="center" data-field="isOpen" data-formatter="isOpenFormatter">是否开通</th>
-							<th data-align="center" data-field="dasd" data-formatter="operateFormatter" data-events="operateEvents">操作</th>
+							<th data-align="center" data-field="categoryId" data-visible="false">Category Id</th>
+							<th data-align="center" data-field="category">Category Name</th>
+							<th data-align="center" data-field="isOpen" data-formatter="isOpenFormatter">Confirm Provision</th>
+							<th data-align="center" data-field="dasd" data-formatter="operateFormatter" data-events="operateEvents">Opreate</th>
 						</tr>
 					</thead>
 				</table>
@@ -78,28 +78,28 @@
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal"
 				aria-hidden="true">&times;</button>
-				<h3 class="modal-title" id="myModalLabel">添加商品</h3>
+				<h3 class="modal-title" id="myModalLabel">Add Product</h3>
 			</div>
 
 			<form class="form-horizontal">
 				<div class="modal-body">
 					<div class="form-group none">
-						<label class="control-label col-sm-3" for="category_id">商品分类Id</label>
+						<label class="control-label col-sm-3" for="category_id">Category Id</label>
 						<div class="col-sm-8">
 							<input type="text" id="category_id" placeholder="Category Id">
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="control-label col-sm-3" for="category_name">分类名称</label>
+						<label class="control-label col-sm-3" for="category_name">Category Name</label>
 						<div class="col-sm-8">
 							<input type="text" id="category_name" placeholder="Category Name">
 						</div>
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close
 					</button>
-					<button type="button" onclick="submitData();" class="btn btn-primary">提交更改</button>
+					<button type="button" onclick="submitData();" class="btn btn-primary">Submit Changes</button>
 				</div>
 			</form>
 		</div>
@@ -124,7 +124,7 @@
 <script>
 function setSuccess(message){
     if(!message){
-        $("#operate-success").text("设置成功！");
+        $("#operate-success").text("Set successfully");
     }else{
     	$("#operate-success").text(message);
     }
@@ -159,35 +159,35 @@ var campusId = getCookie("campusId");
 	
 	function isOpenFormatter(value, row){
 		if(value==1){
-			return "是";
+			return "Yes";
 			//<a href="javascript:void(0)" data-name="name" data-pk="undefined" 
 			//data-value="Item 0" class="editable editable-click" 
 			//data-original-title="" title="">Item 0</a>
 		}
 		else{
-			return "否";
+			return "No";
 		}
 	}
 	
 	function operateFormatter(value, row, index) {
 		if(adminType==1){
-			return "无操作权限";
+			return "No Opreation Permission";
 		}else if(adminType==0){
 			if(row.isOpen==1){
 				return [
 			            '</a>',
 			            '<a class="remove ml10" href="javascript:void(0)" title="Remove">',
-			                '关闭',
+			                'Close',
 			            '</a>'
 			        ].join('');
 			}else if(row.isOpen==0){
 				return [
 			            '<a class="like" href="javascript:void(0)" title="Like">',
-			                '开通',
+			                'Provision',
 			            '</a>'
 			        ].join('');
 			}
-	        return "无操作权限";
+	        return "No Opreation Permission";
 		}
 		
     }
@@ -197,7 +197,7 @@ var campusId = getCookie("campusId");
         	
             //alert('You click like icon, row: ' + JSON.stringify(row));
             //console.log(value, row, index);
-            if(confirm("确认开通此分类吗？")){
+            if(confirm("Confirm Start Category？")){
             	$("#table").bootstrapTable('updateRow', {index: index, row: {
             			isOpen: 1
             		}
@@ -225,7 +225,7 @@ var campusId = getCookie("campusId");
         		//return;
         	}
             //console.log(value, row, index);
-        	if(confirm("确认关闭此分类吗？")){
+        	if(confirm("Confirm Close Category?")){
             	$("#table").bootstrapTable('updateRow', {index: index, row: {
             			isOpen: 0
             		}
@@ -263,11 +263,11 @@ var campusId = getCookie("campusId");
 			var array = $table.bootstrapTable('getSelections');
 			flag=1;
 			if (array.length > 1) {
-				alert("编辑操作不能同时选中多条记录！");
+				alert("Cannot edit multiple records！");
 			} else if (array.length == 0) {
-				alert("请先选中某条记录！");
+				alert("Select one record！");
 			} else {
-				$("#myModalLabel").text("编辑商品分类");
+				$("#myModalLabel").text("Edit Product Category");
 				$("#myModal").modal('show');           
 				$("#category_id").val(array[0].categoryId);
 				$("#category_name").val(array[0].category);
@@ -280,13 +280,13 @@ var campusId = getCookie("campusId");
 	$(function() {
 		$deleteButton.click(function() {
 			
-			if(confirm("是否确定删除？")){
+			if(confirm("Confirm Deleting？")){
 				var array = $table.bootstrapTable('getSelections');
 				var categoryIds="";
 				for (var i = array.length - 1; i >= 0; i--) {
 					//判断序列是否是1-8，是的话，不能删除
 					if(array[i].serial>0&&array[i].serial<9){
-						alert("主要分类不能删除！");
+						alert("Cannot delete main category！");
 						return;
 					}
 					categoryIds+=array[i].categoryId+",";
@@ -310,7 +310,7 @@ var campusId = getCookie("campusId");
 	$(function() {
 		$plusButton.click(function() {
 			flag=0;
-			$("#myModalLabel").text("添加商品分类");
+			$("#myModalLabel").text("Add Category");
 			$("#category_id").attr("disabled",false);
 			$("#myModal").modal('show');
 			

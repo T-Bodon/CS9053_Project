@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>for you推送平台</title>
+	<title>foryou push platform</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<link rel="stylesheet" href="../css/bootstrap.min.css">
 	<link rel="stylesheet" href="../css/bootstrap-table.min.css">
@@ -17,7 +17,7 @@
 	#pushForm label.error{
 		color:red; 
 		font-size:15px;
-		font-family: "新宋体"; 
+		font-family: "New Song Font"; 
 	}
 	  .block{
 	 		display: block;
@@ -27,30 +27,30 @@
 	<div class="container">
 		<div class="page-header">
 			<h1>
-				信息推送管理&nbsp;&nbsp;<small>向用户推送消息</small>
+				Message Push Management&nbsp;&nbsp;<small>Push to users</small>
 			</h1>
 		</div>
 		<form id="pushForm" enctype="multipart/form-data">
 		    <div class="control-group none">
-		    	<label for="campusId" style="font-weight:bold;font-size:1.4em">校区id:</label>
+		    	<label for="campusId" style="font-weight:bold;font-size:1.4em">Campus id:</label>
 		        <div class="controls">
 		            <input type="text" id="campusId" name="campusId"/>
 		        </div>
 		    </div>
 			<div class="control-group">
-				<label for="push_data" style="font-weight:bold;font-size:1.4em">推送内容：</label>
+				<label for="push_data" style="font-weight:bold;font-size:1.4em">Push content：</label>
 				<div class="controls">
-					<textarea id="push_data" class="form-control" rows="5" style="width:100%" name="push_data"  placeholder="推送的内容....."></textarea>	
+					<textarea id="push_data" class="form-control" rows="5" style="width:100%" name="push_data"  placeholder="Content....."></textarea>	
 				</div>
 			</div>
 			<div class="control-group block">
-				<label class="control-label">推送对象：</label>
+				<label class="control-label">People to push：</label>
 				<div class="controls">
 					<label class="checkbox"> <input type="checkbox"
 						name="pushDeviceAndroid" value="1" id="androidPush" checked>
-						Android设备
+						Android device
 					</label> <label class="checkbox inline"> <input type="checkbox"
-					name="pushDeviceIos" value="1" id="iOSPush" checked> iOS设备
+					name="pushDeviceIos" value="1" id="iOSPush" checked> iOS device
 				</label>
 			</div>
 		</div>
@@ -58,15 +58,15 @@
 			<div class="controls">
 				<label class="radio"> <input type="radio"
 					name="alert" id="alertAll" value="1" checked>
-					广播(所有人)
+					Broadcast(All)
 				</label> <label class="radio inline"> <input type="radio"
-				name="alert" id="alertSuperAdmin" value="2"> 广播（分派员）
+				name="alert" id="alertSuperAdmin" value="2"> Broadcast(Dispatcher)
 			</label>
 			<label class="radio inline"> <input type="radio"
 				name="alert" id="alertAdmin" value="3">
-				广播（配送员）
+				Broadcast(Deliveryman)
 			</label> <label class="radio inline"> <input type="radio"
-			name="alert" id="alertUser" value="4"> 个体用户(手机号)
+			name="alert" id="alertUser" value="4"> Individual PhoneNumber
 		</label>
 	</div>
 	
@@ -74,10 +74,10 @@
 <div class="control-group">
 	<label class="control-label"></label>
 	<div class="controls" id="phoneLabel">
-		<input type="text"  placeholder="手机号" name="phone" id="phone">				
+		<input type="text"  placeholder="PhoneNumber" name="phone" id="phone">				
 	</div>
 </div>
-<button id="push_data_commit" type="submit" class="btn btn-primary">发布推送</button>
+<button id="push_data_commit" type="submit" class="btn btn-primary">Release Push</button>
 </form>
 </div>
 <script type="text/javascript">
@@ -99,8 +99,8 @@
 			},
 			messages:{
 				push_data:{
-					required:"推送的内容不能为空！",
-					maxlength:"不能超过76个字"
+					required:"Content cannot be null！",
+					maxlength:"Cannot exceed 76 words"
 				}
 			},
 			submitHandler: function(form) {
@@ -112,7 +112,7 @@
 					url : "../push/pushPlatForm?server=56846a8a2fee49d14901d39cc48b8b2a",
 					success:function(data){
                             if (data=="success") {
-                            	alert("推送发布成功！");
+                            	alert("Successfully Pushed！");
                             }
 					}
 				});

@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>无标题文档</title>
+	<title>No Title Document</title>
 	<link rel="stylesheet" href="../css/bootstrap.min.css">
 	<link rel="stylesheet" href="../css/bootstrap-table.min.css">
 	 <link rel="shortcut icon" href="img/icon.png">
@@ -31,7 +31,7 @@
 		<div class="container">
 			<div class="row-fluid">
 				<div class="page-header">
-					<h1>零食二级分类管理</h1>
+					<h1>Snack SubCategory Management</h1>
 				</div>
 
 				<div id="toolbar" class="btn-group">
@@ -55,12 +55,12 @@
 					<thead>
 						<tr>
 							<th data-field="state" data-checkbox="true"></th>
-							<th data-align="center" data-field="categoryId">二级分类Id</th>
-							<th data-align="center" data-field="category">名称</th>
+							<th data-align="center" data-field="categoryId">SubCategory Id</th>
+							<th data-align="center" data-field="category">Category Name</th>
 							<th data-align="center" data-field="imgUrl"
-							data-formatter="formatter">分类图片</th>
+							data-formatter="formatter">Category Image</th>
 							<th data-align="center" data-field="parentId"
-							data-sortable="true">上级分类</th>
+							data-sortable="true">Upper Category</th>
 						</tr>
 					</thead>
 				</table>
@@ -76,7 +76,7 @@
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal"
 				aria-hidden="true">&times;</button>
-				<h3 class="modal-title" id="myModalLabel">添加食品分类</h3>
+				<h3 class="modal-title" id="myModalLabel">Add Food Category</h3>
 			</div>
 
 			<form id="secondCategoryForm" class="form-horizontal"
@@ -84,28 +84,28 @@
 			action="../food/updateFoodSecondCategory" method="post">
 			<div class="modal-body">
 				<div class="control-group">
-					<label class="control-label" for="category_id">食品二级分类Id</label>
+					<label class="control-label" for="category_id">Food SubCategory Id</label>
 					<div class="controls">
 						<input type="text" name="categoryId" id="category_id"
 						placeholder="Category Id">
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label" for="category_name">二级分类名称</label>
+					<label class="control-label" for="category_name">SubCategory Name</label>
 					<div class="controls">
 						<input type="text" name="categoryName" id="category_name"
 						placeholder="Category Name">
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label" for="img_url">二级分类图片</label>
+					<label class="control-label" for="img_url">SubCategory Image</label>
 					<div class="controls">
 						<input type="file" id="img_url" name="myfile"
 						placeholder="image">
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label" for="parent_id">上级分类</label>
+					<label class="control-label" for="parent_id">Upper Category</label>
 					<div class="controls">
 								<!-- <input type="text" id="parent_id"
 								placeholder="Frist Category Id"> -->
@@ -116,10 +116,10 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close
 					</button>
 					<button type="button" id="secondFoodCategorySubmit"
-					class="btn btn-primary">提交更改</button>
+					class="btn btn-primary">Submit Changes</button>
 				</div>
 			</form>
 		</div>
@@ -143,11 +143,11 @@
 			var array = $table.bootstrapTable('getSelections');
 			falg = 1;
 			if (array.length > 1) {
-				alert("编辑操作不能同时选中多条记录！");
+				alert("Cannot edit multiple records！");
 			} else if (array.length == 0) {
-				alert("请先选中某条记录！");
+				alert("Select one record！");
 			} else {
-				$("#myModalLabel").text("编辑食品二级分类");
+				$("#myModalLabel").text("Edit Food SubSategory");
 				$("#myModal").modal('show');
 
 				$("#category_id").val(array[0].categoryId);
@@ -159,7 +159,7 @@
 
 		$plusButton.click(function() {
 			flag = 0;
-			$("#myModalLabel").text("添加食品二级分类");
+			$("#myModalLabel").text("Add Food SubCategory");
 			$("#myModal").modal('show');
 		});
 		// $('.selectpicker').selectpicker();
@@ -203,7 +203,7 @@
 	});
 $(function() {
 	$deleteButton.click(function() {
-		if (confirm("是否确定删除？")) {
+		if (confirm("Confirm Deleting？")) {
 			var array = $table.bootstrapTable('getSelections');
 			var categoryIds = "";
 			for ( var i = array.length - 1; i >= 0; i--) {
@@ -236,13 +236,13 @@ $(function() {
 		function() {
 			if ($("#category_id").val() == null
 				|| $("#category_id").val() == ""||!(/^\d+$/.test($("#category_id").val()))) {
-				alert("二级分类ID格式有问题");
+				alert("Issue with SubCategory ID");
 			return;
 		}
 
 		if ($("#category_name").val() == null
 			|| $("#category_name").val() == "") {
-			alert("二级分类名称不能为空");
+			alert("SubCategory name cannot be null");
 		return;
 	}
 

@@ -2,7 +2,7 @@
 <html lang='en'>
 <meta charset='utf-8'>
 <head>
-	<title>For优后台管理</title>
+	<title>Foryou Backend Management</title>
 	<link rel='stylesheet' type='text/css' href='css/bootstrap.min.css'>
 	<link rel="shortcut icon" href="img/icon.png">
 	<script type='text/javascript' src="js/jquery-1.7.2.min.js"></script>
@@ -29,12 +29,12 @@
 			var password=document.getElementById("password").value;
 			
 			if ((phone==null||phone=="")||(password==null||password=="")) {
-				$("#message").html("账号或者密码为空，请检查后输入");
+				$("#message").html("Empty username or password");
 				return;
 			};
 			
-			if($('#dropdownMenu1').text()!='总校区管理员'&&$('#dropdownMenu1').text()!='校区管理员'){
-				$("#message").html("请选择您的角色");
+			if($('#dropdownMenu1').text()!='Main Campus Admin'&&$('#dropdownMenu1').text()!='Campus Admin'){
+				$("#message").html("Choose user");
 				return;
 			}
 			$.post("/seller/toLogin",
@@ -46,7 +46,7 @@
 						if(json.type==0||json.type==1){
 							if(json.type==1){
 								//匹配下拉菜单为总校区管理员
-								if($("#dropdownMenu1").text()=='总校区管理员'){
+								if($("#dropdownMenu1").text()=='Main Campus Admin'){
 									//将用户名和密码存到cookie
 									document.cookie = "campusAdmin="+phone;
 									document.cookie = "password="+password;
@@ -69,14 +69,14 @@
 										},"json");
 										
 									},"json");
-								}else if($("#dropdownMenu1").text()=='校区管理员'){
-									$("#message").html("对不起，您不是校区管理员！");
+								}else if($("#dropdownMenu1").text()=='Campus Admin'){
+									$("#message").html("Sorry, you are not Campus Admin！");
 								}
 							}else if(json.type==0){
 								//匹配下拉菜单为校区管理员
-								if($("#dropdownMenu1").text()=='总校区管理员'){
-									$("#message").html("对不起，您不是总校区管理员！");
-								}else if($("#dropdownMenu1").text()=='校区管理员'){
+								if($("#dropdownMenu1").text()=='Main Campus Admin'){
+									$("#message").html("Sorry, you are not Main Campus Admin！");
+								}else if($("#dropdownMenu1").text()=='Campus Admin'){
 									//将用户名和密码存到cookie
 									document.cookie = "campusAdmin="+phone;
 									document.cookie = "password="+password;
@@ -100,7 +100,7 @@
 								}
 							}
 						}else{
-                            $("#message").html("对不起，你没有登陆权限！");
+                            $("#message").html("Sorry you do not have permission to login");
 						}
 					}else{
 						$("#message").html(json.message);
@@ -125,36 +125,36 @@
 
 				<div class="modal show" id="loginModal" aria-hidden="true">
 					<div class="modal-header">
-						<h2>For优管理平台</h2>
+						<h2>Foryou Management Platform</h2>
 					</div>
 					<div class="modal-body">
 						<form class="form-horizontal" >
 							<div class="control-group">
-								<label class="control-label" for="phone">用户名</label>
+								<label class="control-label" for="phone">Username</label>
 								<div class="controls">
-									<input type="text" id="phone" placeholder="账号">
+									<input type="text" id="phone" placeholder="Username">
 								</div>
 							</div>
 							<div class="control-group">
-								<label class="control-label" for="password">密码</label>
+								<label class="control-label" for="password">Password</label>
 								<div class="controls">
 									<input type="password" id="password"
-									placeholder="密码">
+									placeholder="Password">
 								</div>
 							</div>
 							<div class="control-group" style="height:60px">
-								<label class="control-label" for="dropdownMenu1">角色</label>
+								<label class="control-label" for="dropdownMenu1">Character</label>
 								<div class="controls">
 								<div class="dropdown">
 								<button type="button" class="btn dropdown-toggle btn-primary" id="dropdownMenu1" data-toggle="dropdown">
-								角色<span class="caret"></span>
+								Character<span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
 									<li role="presentation">
-										<a role="menuitem" tabindex="-1" href="javascript:void(0)">校区管理员</a>
+										<a role="menuitem" tabindex="-1" href="javascript:void(0)">Campus Admin</a>
 									</li>
 									<li role="presentation">
-										<a role="menuitem" tabindex="-1" href="javascript:void(0)">总校区管理员</a>
+										<a role="menuitem" tabindex="-1" href="javascript:void(0)">Main Campus Admin</a>
 									</li>
 								</ul>
 							</div>
@@ -164,7 +164,7 @@
 					</div>
 					<div class="modal-footer">
 						<div id="message" class="pull-left message"></div>
-						<button type="button" class="btn btn-primary" onclick="toLogin();">&nbsp;登录&nbsp;</button>
+						<button type="button" class="btn btn-primary" onclick="toLogin();">&nbsp;Login&nbsp;</button>
 						<!-- <a href="/user/forgetPassword" target="_blank"class="inline">Forget password?</a> -->
 					</div>
 				</div>

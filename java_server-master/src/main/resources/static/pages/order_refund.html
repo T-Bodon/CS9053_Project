@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>退款订单处理</title>
+	<title>Refund Order Management</title>
 <link rel="stylesheet"
 	href="../assets/bootstrap-table/bootstrap.min.css">
 <link rel="stylesheet"
@@ -32,7 +32,7 @@
    <div class="container">
 		<div class="page-header">
 			<h1>
-				退款订单管理
+				Refund Order Management
 			</h1>
 		</div>
 		<table id="table" 
@@ -48,16 +48,16 @@
 	      >
 			<thead>
 				<tr>
-					<th data-align="left" data-field="togetherId">订单号</th>
+					<th data-align="left" data-field="togetherId">Order Number</th>
 					<th data-align="left" data-field="chargeId">chargeId</th>
-					<th data-align="left" data-field="userPhone">用户手机号</th>
+					<th data-align="left" data-field="userPhone">userPhone</th>
 					<th data-align="left" data-field="price"
-						data-sortable="true">价格</th>
+						data-sortable="true">price</th>
 					<th data-align="left" data-field="togetherDate"
-						data-sortable="true">订购时间</th>
+						data-sortable="true">Order Time</th>
 					<th data-align="left" data-field="address"
-						data-sortable="true">配送地址</th>
-					<th data-field="refund" data-formatter="refundFormatter" data-events="refundEvents">确认退款</th>
+						data-sortable="true">Delivery Address</th>
+					<th data-field="refund" data-formatter="refundFormatter" data-events="refundEvents">confirmRefund</th>
 				</tr>
 			</thead>
 		</table>
@@ -74,17 +74,17 @@
      function refundFormatter(value, row, index) {
 	    return [
 				 '<a class="refund btn btn-danger" herf="javascript:void(0)" title="close">',
-				 '确认退款',
+				 'Confirm Refund',
 				 '</a>',
 				 '<a class="cancel btn btn-danger ml10" herf="javascript:void(0)" title="close">',
-				 '取消退款',
+				 'Cancel Refund',
 				 '</a>'
 				].join('');					
 	} 
 
       window.refundEvents = {
         'click .refund': function (e, value, row, index) {
-        	if(confirm('是否确定退款')){
+        	if(confirm('Confirm Refund ?')){
         		if(type==1){
         			//总校区管理员退款
         			$.post("../order/refund",
@@ -93,7 +93,7 @@
         			   	console.log(data);
         			      if(data.status=="failure"){
         			          $('#info').show();
-		               	      $('#info').html("退款失败，请重试");
+		               	      $('#info').html("Refund failed, please try again");
 		             	      setTimeout("$('#info').hide()", 2000 );
         			     }else if(data.status=="success"){
         			     	    var msg=data.refund.failureMsg;
@@ -102,7 +102,7 @@
                                 window.location.href=alipay_url;
         			    	 }else{
         			    	 	 $('#info').show();
-		               	         $('#info').html("微信支付用户退款成功");
+		               	         $('#info').html("Successfully refunded for WeChatPay user!");
 		             	         setTimeout("$('#info').hide()", 2000 );  
         			    	 	 $('#table').bootstrapTable('refresh', {silent: true});
         			    	 }	        
@@ -118,12 +118,12 @@
         			   function(data){
         			      if(data.status=="success"){
         			          $('#info').show();
-		               	      $('#info').html("操作成功");
+		               	      $('#info').html("Successfully opreated");
 		             	      setTimeout("$('#info').hide()", 2000 );
 		             	      $('#table').bootstrapTable('refresh', {silent: true});
         			      }else{
         			    	  $('#info').show();
-		               	      $('#info').html("操作失败");
+		               	      $('#info').html("Opreation failed");
 		             	      setTimeout("$('#info').hide()", 2000 );       
         			     }
         			 },'json'
@@ -134,18 +134,18 @@
            
         },
         'click .cancel': function (e, value, row, index) {
-        	if(confirm('是否确定取消退款')){
+        	if(confirm('Confirm cancel refund?')){
         		$.post("../order/cancelRefund",
         		   {togetherId:row.togetherId,server:"56846a8a2fee49d14901d39cc48b8b2a"},
         		   function(data){
         		      if(data.status=="success"){
         		      	$('#table').bootstrapTable('refresh', {silent: true});
         		        $('#info').show();
-		               	$('#info').html("操作成功");
+		               	$('#info').html("Successfully opreated");
 		             	setTimeout("$('#info').hide()", 2000 );
         		     }else{
         		    	$('#info').show();
-		               	$('#info').html("失败");
+		               	$('#info').html("Opreation failed");
 		             	setTimeout("$('#info').hide()", 2000 );
         		     }
 
