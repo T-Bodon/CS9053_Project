@@ -46,11 +46,11 @@ public class PackageOrderController {
 		    List<DeliverCom> deliverCom = packageService.getDeliverCom(paramMap);	
 		    resultMap.put("deliverCom", deliverCom);
 		    resultMap.put(Constants.STATUS,Constants.SUCCESS);
-		    resultMap.put(Constants.MESSAGE, "获取快递公司成功");
+		    resultMap.put(Constants.MESSAGE, "Get Express Company Successfully");
 		} catch (Exception e) {
 			e.getStackTrace();
 			resultMap.put(Constants.STATUS,Constants.FAILURE);
-			resultMap.put(Constants.MESSAGE, "获取快递公司失败");
+			resultMap.put(Constants.MESSAGE, "Get Express Company Failed ");
 		}
 		
 		return resultMap;
@@ -65,15 +65,15 @@ public class PackageOrderController {
 	    	int flag=packageService.insert(packageOrder);
 	    	if(flag!=-1&&flag!=0){
 	    		resultMap.put(Constants.STATUS,Constants.SUCCESS);
-		    	resultMap.put(Constants.MESSAGE,"生成订成功");
+		    	resultMap.put(Constants.MESSAGE,"Order generated successfully");
 	    	}else{
 	    		resultMap.put(Constants.STATUS,Constants.FAILURE);
-		    	resultMap.put(Constants.MESSAGE,"生成订单失败，请重试！");
+		    	resultMap.put(Constants.MESSAGE,"Order generated failed, pleast try again");
 	    	}
 	    }catch(Exception e){
 	    	e.getStackTrace();
 	    	resultMap.put(Constants.STATUS,Constants.FAILURE);
-	    	resultMap.put(Constants.MESSAGE,"生成订单失败，请重试！");
+	    	resultMap.put(Constants.MESSAGE,"Order generated failed, pleast try again");
 	    }
 	    
 	    return resultMap;
@@ -92,15 +92,15 @@ public class PackageOrderController {
 			  int flag=packageService.setPackageAdmin(paramMap);
 			  if(flag!=-1&&flag!=0){
 				resultMap.put(Constants.STATUS,Constants.SUCCESS);
-			    resultMap.put(Constants.MESSAGE,"设置配送员成功！");
+			    resultMap.put(Constants.MESSAGE,"Successfully set the deliveryman");
 			  }else{
 				resultMap.put(Constants.STATUS,Constants.FAILURE);
-			    resultMap.put(Constants.MESSAGE,"设置配送员失败，请重试！");
+			    resultMap.put(Constants.MESSAGE,"Failed set the deliveryman");
 			  }
 		} catch (Exception e) {
 			e.getStackTrace();
 			resultMap.put(Constants.STATUS,Constants.FAILURE);
-	    	resultMap.put(Constants.MESSAGE,"设置配送员失败，请重试！");
+	    	resultMap.put(Constants.MESSAGE,"Failed set the deliveryman");
 		}
 		return resultMap;
 	}

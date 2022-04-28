@@ -61,17 +61,17 @@ public class NewsController {
             List<SmallNews> news = newsService.getSmallNews(requestMap);
             if (news.size() == 0) {
                 map.put(Constants.STATUS, Constants.SUCCESS);
-                map.put(Constants.MESSAGE, "没有图片！");
+                map.put(Constants.MESSAGE, "No image");
                 map.put("newsList", news);
             } else {
                 map.put(Constants.STATUS, Constants.SUCCESS);
-                map.put(Constants.MESSAGE, "获取图片成功！");
+                map.put(Constants.MESSAGE, "Get Image Successfully");
                 map.put("newsList", news);
             }
         } catch (Exception e) {
             e.getStackTrace();
             map.put(Constants.STATUS, Constants.FAILURE);
-            map.put(Constants.MESSAGE, "获取图片失败");
+            map.put(Constants.MESSAGE, "Get Image Failed");
         }
 
         return map;
@@ -92,16 +92,16 @@ public class NewsController {
             News news = newsService.getNewsById(newsId);
             if (news == null) {
                 map.put(Constants.STATUS, Constants.FAILURE);
-                map.put(Constants.MESSAGE, "获取新闻失败");
+                map.put(Constants.MESSAGE, "Get News Failed");
             } else {
                 map.put(Constants.STATUS, Constants.SUCCESS);
-                map.put(Constants.MESSAGE, "获取新闻成功");
+                map.put(Constants.MESSAGE, "Get News Successfully");
                 map.put("news", news);
             }
         } catch (Exception e) {
             e.getStackTrace();
             map.put(Constants.STATUS, Constants.FAILURE);
-            map.put(Constants.MESSAGE, "获取新闻失败");
+            map.put(Constants.MESSAGE, "Get News Failed");
         }
         return map;
     }
@@ -147,7 +147,7 @@ public class NewsController {
         String content = request.getParameter("content");
         Integer campusId = Integer.parseInt(request.getParameter("campusId"));
         if (myfile.isEmpty()) {
-            System.out.println("文件未上传");
+            System.out.println("File does not upload");
         } else {
             String contentType = myfile.getContentType();
 
@@ -193,15 +193,15 @@ public class NewsController {
             }
             if (flag != -1) {
                 map.put(Constants.STATUS, Constants.SUCCESS);
-                map.put(Constants.MESSAGE, "删除新闻成功！");
+                map.put(Constants.MESSAGE, "Delete News Successfully");
             } else {
                 map.put(Constants.STATUS, Constants.FAILURE);
-                map.put(Constants.MESSAGE, "删除新闻失败！");
+                map.put(Constants.MESSAGE, "Delete News Failed");
             }
         } catch (Exception e) {
             e.printStackTrace();
             map.put(Constants.STATUS, Constants.FAILURE);
-            map.put(Constants.MESSAGE, "删除新闻失败！");
+            map.put(Constants.MESSAGE, "Delete News Failed");
         }
 
         return map;

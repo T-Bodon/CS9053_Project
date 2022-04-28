@@ -63,13 +63,13 @@ public class CampusController {
             List<CityWithCampus> campus = campusService.getCampusWithCity(paramMap);
 
             resultMap.put(Constants.STATUS, Constants.SUCCESS);
-            resultMap.put(Constants.MESSAGE, "获取校区成功");
+            resultMap.put(Constants.MESSAGE, "Get Campus Successfully ");
             resultMap.put("campus", campus);
 
         } catch (Exception e) {
             e.getStackTrace();
             resultMap.put(Constants.STATUS, Constants.FAILURE);
-            resultMap.put(Constants.MESSAGE, "获取校区失败！");
+            resultMap.put(Constants.MESSAGE, "Get Campus Failed ");
         }
         return resultMap;
     }
@@ -87,13 +87,13 @@ public class CampusController {
             paramMap.put("campusName", campusName.trim());
             Integer campusId = campusService.getIdByName(paramMap);
             map.put(Constants.STATUS, Constants.SUCCESS);
-            map.put(Constants.MESSAGE, "获取校区Id成功！");
+            map.put(Constants.MESSAGE, "Get Campus Id Successfully");
             map.put("campusId", campusId);
 
         } catch (Exception e) {
             e.getStackTrace();
             map.put(Constants.STATUS, Constants.FAILURE);
-            map.put(Constants.MESSAGE, "获取校区Id失败！");
+            map.put(Constants.MESSAGE, "Get Campus Id Failed");
         }
 
         return map;
@@ -121,16 +121,16 @@ public class CampusController {
             if (status == 1) {
                 responseMap.put("isOpened", flag);
                 responseMap.put(Constants.STATUS, Constants.SUCCESS);
-                responseMap.put(Constants.MESSAGE, "开店成功！");
+                responseMap.put(Constants.MESSAGE, "Close Store Successfully ");
             } else if (status == 0) {
                 responseMap.put("isClosed", flag);
                 responseMap.put(Constants.STATUS, Constants.SUCCESS);
-                responseMap.put(Constants.MESSAGE, "关店成功！");
+                responseMap.put(Constants.MESSAGE, "Close Store Failed ");
             }
         } catch (Exception e) {
             e.getStackTrace();
             responseMap.put(Constants.STATUS, Constants.FAILURE);
-            responseMap.put(Constants.MESSAGE, "操作失败！");
+            responseMap.put(Constants.MESSAGE, "Opreation Failed ");
         }
 
         return responseMap;
@@ -149,13 +149,13 @@ public class CampusController {
             paramMap.put("campusId", campusId);
             Campus campus = campusService.getCampusById(paramMap);
             map.put(Constants.STATUS, Constants.SUCCESS);
-            map.put(Constants.MESSAGE, "获取校区成功！");
+            map.put(Constants.MESSAGE, "Setup Store Successfully ");
             map.put("campus", JSON.toJSON(campus));
 
         } catch (Exception e) {
             e.getStackTrace();
             map.put(Constants.STATUS, Constants.FAILURE);
-            map.put(Constants.MESSAGE, "获取校区失败！");
+            map.put(Constants.MESSAGE, "Get Campus Failed ");
         }
 
         return map;
@@ -217,10 +217,10 @@ public class CampusController {
         if (result == 0 || result == -1) {
             //没更新成功
             responseMap.put(Constants.STATUS, Constants.FAILURE);
-            responseMap.put(Constants.MESSAGE, "修改校区的管理员失败！");
+            responseMap.put(Constants.MESSAGE, "Modify Campus Admin Failed ");
         } else {
             responseMap.put(Constants.STATUS, Constants.SUCCESS);
-            responseMap.put(Constants.MESSAGE, "修改校区的管理员成功！");
+            responseMap.put(Constants.MESSAGE, "Modify Campus Admin Successfully ");
         }
 
         return responseMap;
@@ -246,10 +246,10 @@ public class CampusController {
         Integer result = campusService.deleteCampusAdmin(paramMap);
         if (result > 0) {
             responseMap.put(Constants.STATUS, Constants.SUCCESS);
-            responseMap.put(Constants.MESSAGE, "删除成功");
+            responseMap.put(Constants.MESSAGE, "Delete Sucessfully");
         } else {
             responseMap.put(Constants.STATUS, Constants.FAILURE);
-            responseMap.put(Constants.MESSAGE, "删除失败");
+            responseMap.put(Constants.MESSAGE, "Detele Failed");
         }
         return responseMap;
     }
@@ -314,10 +314,10 @@ public class CampusController {
 
         if (result != 0 && result != -1) {
             responseMap.put(Constants.STATUS, Constants.SUCCESS);
-            responseMap.put(Constants.MESSAGE, "添加校区管理员成功，请及时将账户分派给相应人员并提醒他/她修改密码");
+            responseMap.put(Constants.MESSAGE, "Add campus successfully, please dispatch accounts to people and remind them to modify passwords ");
         } else {
             responseMap.put(Constants.STATUS, Constants.FAILURE);
-            responseMap.put(Constants.MESSAGE, "添加校区管理员失败");
+            responseMap.put(Constants.MESSAGE, "Add campus failed ");
         }
         return responseMap;
     }
@@ -346,14 +346,14 @@ public class CampusController {
             Integer result = campusService.addCity(paramMap);
             if (result != -1 && result != 0) {
                 responseMap.put(Constants.STATUS, Constants.SUCCESS);
-                responseMap.put(Constants.MESSAGE, "添加城市成功！");
+                responseMap.put(Constants.MESSAGE, "Add City Successfully ");
             } else {
                 responseMap.put(Constants.STATUS, Constants.FAILURE);
-                responseMap.put(Constants.MESSAGE, "添加城市失败！");
+                responseMap.put(Constants.MESSAGE, "Add City Failed ");
             }
         } else {
             responseMap.put(Constants.STATUS, Constants.FAILURE);
-            responseMap.put(Constants.MESSAGE, "该城市已存在");
+            responseMap.put(Constants.MESSAGE, "City Already Exists ");
         }
 
         return responseMap;
@@ -378,10 +378,10 @@ public class CampusController {
 
         if (result != 0 && result != -1) {
             responseMap.put(Constants.STATUS, Constants.SUCCESS);
-            responseMap.put(Constants.MESSAGE, "更新校区成功！");
+            responseMap.put(Constants.MESSAGE, "Update Campus Successfully ");
         } else {
             responseMap.put(Constants.STATUS, Constants.FAILURE);
-            responseMap.put(Constants.MESSAGE, "更新校区失败！");
+            responseMap.put(Constants.MESSAGE, "Update Campus Failed ");
         }
 
         return responseMap;
@@ -405,19 +405,19 @@ public class CampusController {
                 int flag = campusService.updateCampusAdminPassword(paramMap);
                 if (flag != -1) {
                     resultMap.put(Constants.STATUS, Constants.SUCCESS);
-                    resultMap.put(Constants.MESSAGE, "修改密码成功");
+                    resultMap.put(Constants.MESSAGE, "Modify Password Succefully");
                 } else {
                     resultMap.put(Constants.STATUS, Constants.FAILURE);
-                    resultMap.put(Constants.MESSAGE, "修改密码失败");
+                    resultMap.put(Constants.MESSAGE, "Modify Password Failed");
                 }
             } else {
                 resultMap.put(Constants.STATUS, Constants.FAILURE);
-                resultMap.put(Constants.MESSAGE, "原密码输入错误请重新输入");
+                resultMap.put(Constants.MESSAGE, "Wrong Old Password");
             }
         } catch (Exception e) {
             e.getStackTrace();
             resultMap.put(Constants.STATUS, Constants.FAILURE);
-            resultMap.put(Constants.MESSAGE, "修改密码失败");
+            resultMap.put(Constants.MESSAGE, "Modify Password Failed");
         }
 
         return resultMap;
