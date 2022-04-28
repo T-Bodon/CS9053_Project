@@ -43,8 +43,7 @@ import com.changyu.foryou.tools.Constants;
 
 /**
  * 食品控制类
- *
- * @author 殿下 2014/12/16
+ * 
  */
 @Controller
 @RequestMapping("/service")
@@ -94,16 +93,16 @@ public class FoodController {
                     .getFirstCategory(paramMap);
             if (foodCategories != null) {
                 map.put(Constants.STATUS, Constants.SUCCESS);
-                map.put(Constants.MESSAGE, "获取一级分类成功");
+                map.put(Constants.MESSAGE, "Get First Class");
                 map.put("foodCategory", foodCategories);
             } else {
                 map.put(Constants.STATUS, Constants.FAILURE);
-                map.put(Constants.MESSAGE, "还没有一级分类哦");
+                map.put(Constants.MESSAGE, "No First Class");
             }
         } catch (Exception e) {
             e.getStackTrace();
             map.put(Constants.STATUS, Constants.FAILURE);
-            map.put(Constants.MESSAGE, "获取一级分类失败");
+            map.put(Constants.MESSAGE, "Get First Class Failed");
         }
         return map;
     }
@@ -208,18 +207,18 @@ public class FoodController {
 
             if (foods.size() != 0) {
                 map.put(Constants.STATUS, Constants.SUCCESS);
-                map.put(Constants.MESSAGE, "获取食品成功");
+                map.put(Constants.MESSAGE, "Get Food Successfully");
                 map.put("foods", foods);
                 System.out.println(JSON.toJSONString(foods));
             } else {
                 map.put(Constants.STATUS, Constants.SUCCESS);
-                map.put(Constants.MESSAGE, "没有其他零食喽，亲");
+                map.put(Constants.MESSAGE, "No Other Snack");
                 map.put("foods", foods);
             }
         } catch (Exception e) {
             e.getStackTrace();
             map.put(Constants.STATUS, Constants.FAILURE);
-            map.put(Constants.MESSAGE, "查询零食失败");
+            map.put(Constants.MESSAGE, "Query Snack Failed");
         }
         return map;
     }
@@ -259,16 +258,16 @@ public class FoodController {
                         .getCommentCountsById(paramMap));
                 // food.setFoodSpecial(foodSpecials);
                 map.put(Constants.STATUS, Constants.SUCCESS);
-                map.put(Constants.MESSAGE, "获取食品成功");
+                map.put(Constants.MESSAGE, "Get Food Successfully");
                 map.put("food", food);
             } else {
                 map.put(Constants.STATUS, Constants.FAILURE);
-                map.put(Constants.MESSAGE, "没有该零食");
+                map.put(Constants.MESSAGE, "No This Snack");
             }
         } catch (Exception e) {
             e.getStackTrace();
             map.put(Constants.STATUS, Constants.FAILURE);
-            map.put(Constants.MESSAGE, "获取零食失败");
+            map.put(Constants.MESSAGE, "Get Snack Failed");
         }
         return map;
     }
@@ -303,20 +302,20 @@ public class FoodController {
             if (status != -1) {
                 if (status != 0) {
                     map.put(Constants.STATUS, Constants.SUCCESS);
-                    map.put(Constants.MESSAGE, "删除零食成功！");
+                    map.put(Constants.MESSAGE, "Delete Snack Successfuly ");
                 } else {
                     map.put(Constants.STATUS, Constants.FAILURE);
-                    map.put(Constants.MESSAGE, "有不存在零食，无法删除！");
+                    map.put(Constants.MESSAGE, "Non-exist S mnack Found！");
                 }
             } else {
                 map.put(Constants.STATUS, Constants.FAILURE);
-                map.put(Constants.MESSAGE, "删除零食失败！");
+                map.put(Constants.MESSAGE, "Delete Snack Failed！");
             }
 
         } catch (Exception e) {
             e.printStackTrace();
             map.put(Constants.STATUS, Constants.FAILURE);
-            map.put(Constants.MESSAGE, "删除零食失败！");
+            map.put(Constants.MESSAGE, "Delete Snack Failed！");
         }
 
         return map;
@@ -353,15 +352,15 @@ public class FoodController {
             if (foodComments.size() != 0) {
                 map.put("foodComments", jsonArray);
                 map.put(Constants.STATUS, Constants.SUCCESS);
-                map.put(Constants.MESSAGE, "获取评论成功！");
+                map.put(Constants.MESSAGE, "Get Comment Successfully");
             } else {
                 map.put(Constants.STATUS, Constants.SUCCESS);
-                map.put(Constants.MESSAGE, "暂时还没有评论哦,亲！");
+                map.put(Constants.MESSAGE, "No Comment For Now");
             }
         } catch (Exception e) {
             e.printStackTrace();
             map.put(Constants.STATUS, Constants.FAILURE);
-            map.put(Constants.MESSAGE, "获取评论失败！");
+            map.put(Constants.MESSAGE, "Get Comment Failed");
         }
         return map;
     }
@@ -449,7 +448,7 @@ public class FoodController {
 
             if (foodService.getSpecialCount(paramMap) >= 3) {
                 map.put(Constants.STATUS, Constants.FAILURE);
-                map.put(Constants.MESSAGE, "食品口味种类已饱和，不可再添加！");
+                map.put(Constants.MESSAGE, "Food tastes are full");
                 return map;
             }
 
@@ -466,15 +465,15 @@ public class FoodController {
 
             if (flag != 0 && flag != -1) {
                 map.put(Constants.STATUS, Constants.SUCCESS);
-                map.put(Constants.MESSAGE, "添加食品口味成功！");
+                map.put(Constants.MESSAGE, "Add food taste successfully");
             } else {
                 map.put(Constants.STATUS, Constants.FAILURE);
-                map.put(Constants.MESSAGE, "添加食品口味失败！");
+                map.put(Constants.MESSAGE, "Add food taste failed");
             }
         } catch (Exception e) {
             e.getStackTrace();
             map.put(Constants.STATUS, Constants.FAILURE);
-            map.put(Constants.MESSAGE, "添加食品口味失败！");
+            map.put(Constants.MESSAGE, "Add food taste failed");
         }
 
         return map;
@@ -503,7 +502,7 @@ public class FoodController {
             Order order = orderService.selectPersonOrder(phoneId, orderId); // 查询数据库看是否有订单存在，下了单才可以评论
             if (order == null) {
                 map.put(Constants.STATUS, Constants.FAILURE);
-                map.put(Constants.MESSAGE, "没有评论权限！");
+                map.put(Constants.MESSAGE, "No Comment Permission");
             } else {
                 FoodComment foodComment = new FoodComment();
                 foodComment.setComment(comment);
@@ -520,16 +519,16 @@ public class FoodController {
                 if (flag == 1) {
                     orderService.updateOrderRemarked(phoneId, orderId);
                     map.put(Constants.STATUS, Constants.SUCCESS);
-                    map.put(Constants.MESSAGE, "添加评论成功！");
+                    map.put(Constants.MESSAGE, "Add Comment Successfully");
                 } else {
                     map.put(Constants.STATUS, Constants.FAILURE);
-                    map.put(Constants.MESSAGE, "添加评论失败！");
+                    map.put(Constants.MESSAGE, "Add Comment Successfully");
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
             map.put(Constants.STATUS, Constants.FAILURE);
-            map.put(Constants.MESSAGE, "添加评论失败！");
+            map.put(Constants.MESSAGE, "Add Comment Successfully");
         }
 
         return map;
@@ -589,12 +588,12 @@ public class FoodController {
             List<ShortFood> foodlist = foodService
                     .getFoodListDiscount(paramMap);
             map.put(Constants.STATUS, Constants.SUCCESS);
-            map.put(Constants.MESSAGE, "获取数据成功！");
+            map.put(Constants.MESSAGE, "Get Data Successfully");
             map.put("foods", foodlist);
         } catch (Exception e) {
             e.printStackTrace();
             map.put(Constants.STATUS, Constants.FAILURE);
-            map.put(Constants.MESSAGE, "获取食物列表失败！");
+            map.put(Constants.MESSAGE, "Get Food List Failed");
         }
 
         return map;
@@ -623,12 +622,12 @@ public class FoodController {
 
             List<ShortFood> foodlist = foodService.getFoodListWelcome(paramMap);
             map.put(Constants.STATUS, Constants.SUCCESS);
-            map.put(Constants.MESSAGE, "获取数据成功！");
+            map.put(Constants.MESSAGE, "Get Data Successfully");
             map.put("foods", foodlist);
         } catch (Exception e) {
             e.printStackTrace();
             map.put(Constants.STATUS, Constants.FAILURE);
-            map.put(Constants.MESSAGE, "获取食物列表失败！");
+            map.put(Constants.MESSAGE, "Get Food List Failed");
         }
 
         return map;
@@ -657,12 +656,12 @@ public class FoodController {
 
             List<ShortFood> foodlist = foodService.getFoodListFresh(paramMap);
             map.put(Constants.STATUS, Constants.SUCCESS);
-            map.put(Constants.MESSAGE, "获取数据成功！");
+            map.put(Constants.MESSAGE, "Get Data Successfully");
             map.put("foods", foodlist);
         } catch (Exception e) {
             e.printStackTrace();
             map.put(Constants.STATUS, Constants.FAILURE);
-            map.put(Constants.MESSAGE, "获取食物列表失败！");
+            map.put(Constants.MESSAGE, "Get Food List Failed");
         }
 
         return map;
@@ -708,7 +707,7 @@ public class FoodController {
                     // id已存在
                     if (status == 0) {
                         map.put(Constants.STATUS, Constants.FAILURE);
-                        map.put(Constants.MESSAGE, "id已存在，不能添加");
+                        map.put(Constants.MESSAGE, "id already exists");
                         return map;
                     } else {
                         flag = foodService
@@ -720,15 +719,15 @@ public class FoodController {
             }
             if (flag == 0 || flag == -1) {
                 map.put(Constants.STATUS, Constants.FAILURE);
-                map.put(Constants.MESSAGE, "提交失败");
+                map.put(Constants.MESSAGE, "Submmit Failed");
             } else {
                 map.put(Constants.STATUS, Constants.SUCCESS);
-                map.put(Constants.MESSAGE, "提交成功");
+                map.put(Constants.MESSAGE, "Submit Successfully");
             }
         } catch (Exception e) {
             e.printStackTrace();
             map.put(Constants.STATUS, Constants.FAILURE);
-            map.put(Constants.MESSAGE, "提交失败");
+            map.put(Constants.MESSAGE, "Submit Failed");
         }
 
         return map;
@@ -824,17 +823,17 @@ public class FoodController {
 
             if (flag == -1 || flag == 0) {
                 map.put(Constants.STATUS, Constants.FAILURE);
-                map.put(Constants.MESSAGE, "删除失败");
+                map.put(Constants.MESSAGE, "Delete Failed");
             } else {
                 map.put(Constants.STATUS, Constants.SUCCESS);
-                map.put(Constants.MESSAGE, "删除成功");
+                map.put(Constants.MESSAGE, "Delete Successfully");
 
             }
 
         } catch (Exception e) {
             e.printStackTrace();
             map.put(Constants.STATUS, Constants.FAILURE);
-            map.put(Constants.MESSAGE, "删除失败");
+            map.put(Constants.MESSAGE, "Delete Failed");
         }
         return map;
     }
@@ -888,7 +887,7 @@ public class FoodController {
             List<String> imageUrl = new ArrayList<String>();
             for (MultipartFile file : myfile) {
                 if (file.isEmpty()) {
-                    System.out.println("文件未上传");
+                    System.out.println("File does not upload");
                     imageUrl.add(null);
                 } else {
                     String contentType = file.getContentType();
@@ -1059,11 +1058,11 @@ public class FoodController {
                 }
             }
             map.put(Constants.STATUS, Constants.SUCCESS);
-            map.put(Constants.MESSAGE, "更新口味成功");
+            map.put(Constants.MESSAGE, "Update Taste Successfully");
         } catch (Exception e) {
             e.printStackTrace();
             map.put(Constants.STATUS, Constants.FAILURE);
-            map.put(Constants.MESSAGE, "更新口味失败");
+            map.put(Constants.MESSAGE, "Update Taste Failed");
         }
 
         return map;
@@ -1093,15 +1092,15 @@ public class FoodController {
             map.put("food", shortFood);
             if (shortFood.size() == 0) {
                 map.put(Constants.STATUS, Constants.SUCCESS);
-                map.put(Constants.MESSAGE, "查找成功,没有要推到主页的图片");
+                map.put(Constants.MESSAGE, "Query successfully, no image to push to the homepage");
             } else {
                 map.put(Constants.STATUS, Constants.SUCCESS);
-                map.put(Constants.MESSAGE, "查找成功");
+                map.put(Constants.MESSAGE, "Query Successfully");
             }
 
         } catch (Exception e) {
             map.put(Constants.STATUS, Constants.FAILURE);
-            map.put(Constants.MESSAGE, "查找失败");
+            map.put(Constants.MESSAGE, "Query Failed");
         }
 
         return map;
@@ -1126,11 +1125,11 @@ public class FoodController {
             map.put("homeCategory", homeCategory);
             map.put("campus", campusService.getCampusById(paramMap));
             map.put(Constants.STATUS, Constants.SUCCESS);
-            map.put(Constants.MESSAGE, "获取主页分类成功");
+            map.put(Constants.MESSAGE, "Get homepage category successfully");
         } catch (Exception e) {
             e.getStackTrace();
             map.put(Constants.STATUS, Constants.FAILURE);
-            map.put(Constants.MESSAGE, "获取主页分类失败");
+            map.put(Constants.MESSAGE, "Get homepage category failed");
         }
         return map;
     }
@@ -1189,7 +1188,7 @@ public class FoodController {
         paramMap.put("campusId", campusId); // 校区号
 
         if (homeImageFile.isEmpty()) { // 不更新主页图片
-            System.out.println("文件未上传");
+            System.out.println("File does not upload");
 
             int flag = foodService.uploadHomeFoodByFoodId(paramMap);
             if (flag != 0 && flag != -1) {
@@ -1260,7 +1259,7 @@ public class FoodController {
                 break;
             }
             if (detailImageFile.isEmpty()) {
-                System.out.println("文件未上传");
+                System.out.println("File does not upload");
                 bufferInfo.append("," + request.getParameter("img" + i));
             } else {
                 String contentType = detailImageFile.getContentType();
@@ -1344,10 +1343,10 @@ public class FoodController {
         Integer cancel = foodService.cancelRecommend(paramMap);
         if (cancel == -1 || cancel == 0) {
             responseMap.put(Constants.STATUS, Constants.FAILURE);
-            responseMap.put(Constants.MESSAGE, "取消推荐失败！");
+            responseMap.put(Constants.MESSAGE, "Cancel recommandation failed");
         } else {
             responseMap.put(Constants.STATUS, Constants.SUCCESS);
-            responseMap.put(Constants.MESSAGE, "取消推荐成功！");
+            responseMap.put(Constants.MESSAGE, "Cancel recommandation successfully");
         }
         return responseMap;
     }
@@ -1410,10 +1409,10 @@ public class FoodController {
         Integer result = foodService.addFoodCountById(requestMap);
         if (result > 0) {
             responseMap.put(Constants.STATUS, Constants.SUCCESS);
-            responseMap.put(Constants.MESSAGE, "添加库存成功");
+            responseMap.put(Constants.MESSAGE, "Add Stock Successfully");
         } else {
             responseMap.put(Constants.STATUS, Constants.FAILURE);
-            responseMap.put(Constants.MESSAGE, "添加库存失败");
+            responseMap.put(Constants.MESSAGE, "Add Stock Failed");
         }
 
         return responseMap;
@@ -1434,10 +1433,10 @@ public class FoodController {
         Integer result = foodService.addFoodCount(requestMap);
         if (result > 0) {
             responseMap.put(Constants.STATUS, Constants.SUCCESS);
-            responseMap.put(Constants.MESSAGE, "添加库存成功");
+            responseMap.put(Constants.MESSAGE, "Add Stock Successfully");
         } else {
             responseMap.put(Constants.STATUS, Constants.FAILURE);
-            responseMap.put(Constants.MESSAGE, "添加库存失败");
+            responseMap.put(Constants.MESSAGE, "Add Stock Failed");
         }
         return responseMap;
     }
@@ -1469,11 +1468,11 @@ public class FoodController {
             resultMap.put("imgs", detailImgsWithoutNull);
 
             resultMap.put(Constants.STATUS, Constants.SUCCESS);
-            resultMap.put(Constants.MESSAGE, "获取成功");
+            resultMap.put(Constants.MESSAGE, "Get Successfully");
         } catch (Exception e) {
             e.getStackTrace();
             resultMap.put(Constants.STATUS, Constants.FAILURE);
-            resultMap.put(Constants.MESSAGE, "获取失败");
+            resultMap.put(Constants.MESSAGE, "Get Failed");
         }
 
         return resultMap;

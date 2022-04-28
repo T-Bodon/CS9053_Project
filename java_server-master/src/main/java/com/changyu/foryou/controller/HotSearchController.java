@@ -56,14 +56,14 @@ public class HotSearchController {
             int flag = hotSearchService.setNot2Display(paramMap);
             if (flag != -1) {
                 resultMap.put(Constants.STATUS, Constants.SUCCESS);
-                resultMap.put(Constants.MESSAGE, "修改成功");
+                resultMap.put(Constants.MESSAGE, "Modify Successfully");
             } else {
                 resultMap.put(Constants.STATUS, Constants.FAILURE);
-                resultMap.put(Constants.MESSAGE, "修改失败");
+                resultMap.put(Constants.MESSAGE, "Modify Failed");
             }
         } catch (Exception e) {
             resultMap.put(Constants.STATUS, Constants.FAILURE);
-            resultMap.put(Constants.MESSAGE, "修改失败");
+            resultMap.put(Constants.MESSAGE, "Modify Failed");
         }
 
         return resultMap;
@@ -86,14 +86,14 @@ public class HotSearchController {
             int flag = hotSearchService.set2Display(paramMap);
             if (flag != -1) {
                 resultMap.put(Constants.STATUS, Constants.SUCCESS);
-                resultMap.put(Constants.MESSAGE, "修改成功");
+                resultMap.put(Constants.MESSAGE, "Modify Successfully");
             } else {
                 resultMap.put(Constants.STATUS, Constants.FAILURE);
-                resultMap.put(Constants.MESSAGE, "修改失败");
+                resultMap.put(Constants.MESSAGE, "Modify Failed");
             }
         } catch (Exception e) {
             resultMap.put(Constants.STATUS, Constants.FAILURE);
-            resultMap.put(Constants.MESSAGE, "修改失败");
+            resultMap.put(Constants.MESSAGE, "Modify Failed");
         }
 
 
@@ -119,15 +119,15 @@ public class HotSearchController {
             int flag = hotSearchService.deleteHotSearchs(paramMap);
             if (flag != -1) {
                 resultMap.put(Constants.STATUS, Constants.SUCCESS);
-                resultMap.put(Constants.MESSAGE, "修改成功");
+                resultMap.put(Constants.MESSAGE, "Modify Successfully");
             } else {
                 resultMap.put(Constants.STATUS, Constants.FAILURE);
-                resultMap.put(Constants.MESSAGE, "修改失败");
+                resultMap.put(Constants.MESSAGE, "Modify Failed");
             }
         } catch (Exception e) {
             e.getStackTrace();
             resultMap.put(Constants.STATUS, Constants.FAILURE);
-            resultMap.put(Constants.MESSAGE, "修改失败");
+            resultMap.put(Constants.MESSAGE, "Modify Failed");
         }
 
         return resultMap;
@@ -156,15 +156,15 @@ public class HotSearchController {
 
             if (flag != -1) {
                 resultMap.put(Constants.STATUS, Constants.SUCCESS);
-                resultMap.put(Constants.MESSAGE, "修改成功");
+                resultMap.put(Constants.MESSAGE, "Modify Successfully");
             } else {
                 resultMap.put(Constants.STATUS, Constants.FAILURE);
-                resultMap.put(Constants.MESSAGE, "修改失败");
+                resultMap.put(Constants.MESSAGE, "Modify Failed");
             }
         } catch (Exception e) {
             e.getStackTrace();
             resultMap.put(Constants.STATUS, Constants.FAILURE);
-            resultMap.put(Constants.MESSAGE, "修改失败");
+            resultMap.put(Constants.MESSAGE, "Modify Failed");
         }
 
         return resultMap;
