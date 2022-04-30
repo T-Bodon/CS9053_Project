@@ -57,7 +57,7 @@ public class ChargeInterface {
             Map<String, Object> refundMap = new HashMap<>();
             System.out.println("charge==" + JSON.toJSONString(ch));
             refundMap.put("amount", (int) (price * 100));
-            refundMap.put("description", "For优商品正常退款");
+            refundMap.put("description", "Product Refund Successfully");
             return ch.getRefunds().create(refundMap);
         } catch (AuthenticationException | InvalidRequestException | APIException | APIConnectionException | ChannelException e) {
             e.printStackTrace();
