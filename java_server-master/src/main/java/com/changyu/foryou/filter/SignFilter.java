@@ -28,8 +28,6 @@ import com.changyu.foryou.tools.Sign;
 /**
  * 实行对接口进行签名
  *
- * @author xiaowei
- * @copyght 倡予科技有限公司
  */
 @Component
 public class SignFilter implements Filter {

@@ -15,9 +15,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.mysql.cj.jdbc.Driver;
 
-/**
- * Created by zhengzh on 2016/8/17.
- */
 @Configuration
 @EnableTransactionManagement
 public class MybatisConfig {

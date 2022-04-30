@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * 防止xss攻击过滤器
  *
- * @author xiaowei
+ * 
  */
 @Component
 public class XssFilter implements Filter {
