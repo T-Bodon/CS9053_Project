@@ -789,12 +789,12 @@ public class OrderController {
                     .superAdminGetOrder(requestMap);
 
             map.put(Constants.STATUS, Constants.SUCCESS);
-            map.put(Constants.MESSAGE, "获取订单成功！");
+            map.put(Constants.MESSAGE, "Order obtained successfully");
             map.put("orderList", JSONArray.parse(JSON
                     .toJSONStringWithDateFormat(orders, "yyyy-MM-dd")));
         } catch (Exception e) {
             map.put(Constants.STATUS, Constants.FAILURE);
-            map.put(Constants.MESSAGE, "获取订单失败！");
+            map.put(Constants.MESSAGE, "Failed to get order");
         }
 
         return map;
@@ -822,25 +822,25 @@ public class OrderController {
             int flag2 = orderService.modifyOrderStatus(paramMap);
             if (flag1 != -1 && flag1 != 0 && flag2 != -1 && flag2 != 0) {
                 map.put(Constants.STATUS, Constants.SUCCESS);
-                map.put(Constants.MESSAGE, "设置配送员成功！");
+                map.put(Constants.MESSAGE, "Successfully set the deliveryman");
 
                 new Thread(new Runnable() {
 
                     public void run() {
                         // 推送
                         pushService.sendPush(adminPhone,
-                                "For优提醒您，一笔新订单已达到，请及时配送，辛苦您了。", 1);
+                                "Foryou reminds you that a new order has been reached. Please deliver it in time", 1);
 
                     }
                 }).start();
 
             } else {
                 map.put(Constants.STATUS, Constants.FAILURE);
-                map.put(Constants.MESSAGE, "设置配送员失败！");
+                map.put(Constants.MESSAGE, "Failed to set the distributor");
             }
         } catch (Exception e) {
             map.put(Constants.STATUS, Constants.FAILURE);
-            map.put(Constants.MESSAGE, "设置配送员失败！");
+            map.put(Constants.MESSAGE, "Failed to set the distributor");
         }
 
         return map;
@@ -872,7 +872,7 @@ public class OrderController {
                     .deliverGetOrder(requestMap);
             if (deliverOrders.size() <= 0) {
                 map.put(Constants.STATUS, Constants.FAILURE);
-                map.put(Constants.MESSAGE, "订单列表为空，请检查phoneId和campusId是否正确。如正确，则当前没有要配送的订单");
+                map.put(Constants.MESSAGE, "The order list is empty. Please check whether the phoneid and campusid are correct. If correct, there are currently no orders to ship");
             } else {
                 for (DeliverOrder deliverOrder : deliverOrders) {
                     String togetherId = deliverOrder.getTogetherId();
@@ -896,13 +896,13 @@ public class OrderController {
                 }
 
                 map.put(Constants.STATUS, Constants.SUCCESS);
-                map.put(Constants.MESSAGE, "获取配送订单成功！");
+                map.put(Constants.MESSAGE, "Get delivery order successfully");
                 map.put("orderList", JSONArray.parse(JSON
                         .toJSONStringWithDateFormat(deliverOrders, "yyyy-MM-dd")));
             }
         } catch (Exception e) {
             map.put(Constants.STATUS, Constants.FAILURE);
-            map.put(Constants.MESSAGE, "获取配送订单失败！");
+            map.put(Constants.MESSAGE, "Failed to get delivery order");
         }
 
         return map;
@@ -973,15 +973,15 @@ public class OrderController {
             int flag = orderService.setOrderInvalid(parameterMap);
             if (flag != -1) {
                 resultMap.put(Constants.STATUS, Constants.SUCCESS);
-                resultMap.put(Constants.MESSAGE, "订单已取消");
+                resultMap.put(Constants.MESSAGE, "Order cancelled");
             } else {
                 resultMap.put(Constants.STATUS, Constants.FAILURE);
-                resultMap.put(Constants.MESSAGE, "订单取消失败，请重试");
+                resultMap.put(Constants.MESSAGE, "Order cancellation failed, please try again");
             }
         } catch (Exception e) {
             e.printStackTrace();
             resultMap.put(Constants.STATUS, Constants.FAILURE);
-            resultMap.put(Constants.MESSAGE, "订单取消失败，请重试");
+            resultMap.put(Constants.MESSAGE, "Order cancellation failed, please try again");
         }
 
         return resultMap;
@@ -1004,8 +1004,8 @@ public class OrderController {
             if (date.equals("") || date.equals("null"))
                 date = null;
             else
-                date = date.replace("年", "-").replace("月", "-")
-                        .replace("日", "");
+                date = date.replace("year", "-").replace("month", "-")
+                        .replace("day", "");
             Map<String, Object> paramMap = new HashMap<String, Object>();
             paramMap.put("date", date);
             paramMap.put("campusId", campusId);
@@ -1110,10 +1110,10 @@ public class OrderController {
                     JSONArray.parse(JSON.toJSONStringWithDateFormat(bigOrder,
                             "yyyy-MM-dd HH:mm:ss")));
             resultMap.put(Constants.STATUS, Constants.SUCCESS);
-            resultMap.put(Constants.MESSAGE, "获取大订单信息成功");
+            resultMap.put(Constants.MESSAGE, "Get big order information successfully");
         } else {
             resultMap.put(Constants.STATUS, Constants.FAILURE);
-            resultMap.put(Constants.MESSAGE, "没有这个大订单");
+            resultMap.put(Constants.MESSAGE, "There is no such big order");
         }
 
         return resultMap;
@@ -1161,7 +1161,7 @@ public class OrderController {
                             //推送
 
                             pushService.sendPush(userPhone,
-                                    "您有一笔订单正在配送中,请稍候。感谢您对For优的支持", 1);
+                                    "You have an order being delivered. Please wait", 1);
 
                         }
                     }).start();
@@ -1174,7 +1174,7 @@ public class OrderController {
                         @Override
                         public void run() {
                             //推送
-                            pushService.sendPush(userPhone, "您有一笔订单已经完成,赶快去评价吧。感谢您对For优的支持", 1);
+                            pushService.sendPush(userPhone, "One of your orders has been completed. Please evaluate it quickly", 1);
                         }
                     }).start();
 
@@ -1190,11 +1190,11 @@ public class OrderController {
                     break;
             }
             resultMap.put(Constants.STATUS, Constants.SUCCESS);
-            resultMap.put(Constants.MESSAGE, "更改状态成功");
+            resultMap.put(Constants.MESSAGE, "Change status succeeded");
             resultMap.put("flag", flag);
         } catch (Exception e) {
             resultMap.put(Constants.STATUS, Constants.FAILURE);
-            resultMap.put(Constants.MESSAGE, "更改状态失败");
+            resultMap.put(Constants.MESSAGE, "Failed to change status");
         }
 
         return resultMap;
@@ -1216,10 +1216,10 @@ public class OrderController {
         if (orders.size() > 0) {
             orderService.deleteOrder(paramMap);
             resultMap.put(Constants.STATUS, Constants.SUCCESS);
-            resultMap.put(Constants.MESSAGE, "删除订单成功");
+            resultMap.put(Constants.MESSAGE, "Order deleted successfully");
         } else {
             resultMap.put(Constants.STATUS, Constants.FAILURE);
-            resultMap.put(Constants.MESSAGE, "订单不存在,删除订单失败");
+            resultMap.put(Constants.MESSAGE, "Order does not exist, failed to delete order");
         }
 
         return resultMap;
@@ -1251,17 +1251,17 @@ public class OrderController {
 
             if (flag == -1 || flag == 0) {
                 resultMap.put(Constants.STATUS, Constants.FAILURE);
-                resultMap.put(Constants.MESSAGE, "生成订单失败");
+                resultMap.put(Constants.MESSAGE, "Failed to generate order");
             }
 
             SmallOrder smallOrder = orderService.getOrderById(paramMap);
             resultMap.put("order", smallOrder);
             resultMap.put(Constants.STATUS, Constants.SUCCESS);
-            resultMap.put(Constants.MESSAGE, "订单详情：");
+            resultMap.put(Constants.MESSAGE, "Order details:");
         } catch (Exception e) {
             e.printStackTrace();
             resultMap.put(Constants.STATUS, Constants.FAILURE);
-            resultMap.put(Constants.MESSAGE, "生成订单失败");
+            resultMap.put(Constants.MESSAGE, "Failed to generate order");
         }
         return resultMap;
 
@@ -1280,7 +1280,7 @@ public class OrderController {
         Preferential preferential = orderService.getPreferentialById(preferentialId);
         resultMap.put("preferential", preferential);
         resultMap.put(Constants.STATUS, Constants.SUCCESS);
-        resultMap.put(Constants.MESSAGE, "获取成功");
+        resultMap.put(Constants.MESSAGE, "Get success");
         return resultMap;
     }
 
@@ -1298,7 +1298,7 @@ public class OrderController {
         List<Preferential> preferentials = orderService.getPreferential(paramMap);
         resultMap.put("preferential", preferentials);
         resultMap.put(Constants.STATUS, Constants.SUCCESS);
-        resultMap.put(Constants.MESSAGE, "获取成功");
+        resultMap.put(Constants.MESSAGE, "Get success");
         return resultMap;
     }
 
@@ -1341,14 +1341,14 @@ public class OrderController {
             Integer flag = orderService.cancelOrderWithRefund(paramMap);
             if (flag != -1) {
                 map.put(Constants.STATUS, Constants.SUCCESS);
-                map.put(Constants.MESSAGE, "取消订单成功，退款受理中，请耐心等待");
+                map.put(Constants.MESSAGE, "The order is cancelled successfully, and the refund is being accepted");
             } else {
                 map.put(Constants.STATUS, Constants.SUCCESS);
-                map.put(Constants.MESSAGE, "取消订单失败，请重试");
+                map.put(Constants.MESSAGE, "Failed to cancel the order, please try again");
             }
         } catch (Exception e) {
             map.put(Constants.STATUS, Constants.SUCCESS);
-            map.put(Constants.MESSAGE, "取消订单失败，请重试");
+            map.put(Constants.MESSAGE, "Failed to cancel the order, please try again");
         }
 
         return map;
@@ -1412,16 +1412,16 @@ public class OrderController {
 
             if (flag == -1) {
                 resultMap.put(Constants.STATUS, Constants.FAILURE);
-                resultMap.put(Constants.MESSAGE, "取消失败");
+                resultMap.put(Constants.MESSAGE, "Cancel failed");
             } else {
                 resultMap.put(Constants.STATUS, Constants.SUCCESS);
-                resultMap.put(Constants.MESSAGE, "取消成功");
+                resultMap.put(Constants.MESSAGE, "Cancellation succeeded");
             }
 
         } catch (Exception e) {
             e.getStackTrace();
             resultMap.put(Constants.STATUS, Constants.FAILURE);
-            resultMap.put(Constants.MESSAGE, "取消失败");
+            resultMap.put(Constants.MESSAGE, "Cancel failed");
         }
 
         return resultMap;
@@ -1446,7 +1446,7 @@ public class OrderController {
             Float price = orderService.getTotalPriceByTogetherId(togetherId);
             if (Math.abs(price - totalPrice) > 0.1) {
                 resultMap.put(Constants.STATUS, Constants.FAILURE);
-                resultMap.put(Constants.MESSAGE, "退款失败");
+                resultMap.put(Constants.MESSAGE, "Refund failed");
             } else {
                 String chargeId = orderService.getChargeId(paramMap);
                 if (chargeId != null) {
@@ -1454,20 +1454,20 @@ public class OrderController {
                     if (refund != null) {
                         resultMap.put("refund", refund);
                         resultMap.put(Constants.STATUS, Constants.SUCCESS);
-                        resultMap.put(Constants.MESSAGE, "操作成功");
+                        resultMap.put(Constants.MESSAGE, "Operation successful");
                     } else {
                         resultMap.put(Constants.STATUS, Constants.FAILURE);
-                        resultMap.put(Constants.MESSAGE, "操作失败");
+                        resultMap.put(Constants.MESSAGE, "Operation failed");
                     }
                 } else {
                     resultMap.put(Constants.STATUS, Constants.FAILURE);
-                    resultMap.put(Constants.MESSAGE, "操作失败");
+                    resultMap.put(Constants.MESSAGE, "Operation failed");
                 }
             }
         } catch (Exception e) {
             e.getStackTrace();
             resultMap.put(Constants.STATUS, Constants.FAILURE);
-            resultMap.put(Constants.MESSAGE, "退款失败");
+            resultMap.put(Constants.MESSAGE, "Refund failed");
         }
 
         return resultMap;
@@ -1489,15 +1489,15 @@ public class OrderController {
             int flag = orderService.updateRefundStatus(paramMap);   //将状态置为10
             if (flag != -1) {
                 resultMap.put(Constants.STATUS, Constants.SUCCESS);
-                resultMap.put(Constants.MESSAGE, "修改成功");
+                resultMap.put(Constants.MESSAGE, "Modified successfully");
             } else {
                 resultMap.put(Constants.STATUS, Constants.FAILURE);
-                resultMap.put(Constants.MESSAGE, "修改失败");
+                resultMap.put(Constants.MESSAGE, "Modification failed");
             }
         } catch (Exception e) {
             e.getStackTrace();
             resultMap.put(Constants.STATUS, Constants.FAILURE);
-            resultMap.put(Constants.MESSAGE, "修改失败");
+            resultMap.put(Constants.MESSAGE, "Modification failed");
         }
 
         return resultMap;
@@ -1528,7 +1528,7 @@ public class OrderController {
             paramMap.put("dateStart", dateStart);
             paramMap.put("dateEnd", dateEnd);
             TradeInfo monthInfo = new TradeInfo();
-            monthInfo.setInfoDateType("当月");
+            monthInfo.setInfoDateType("Current Month");
             monthInfo.setOrderCount(orderService.getSalesInfoByCampusId(paramMap));//获取指定时间段和指定校区的订单总数
             monthInfo.setTradeVolume(orderService.getTradeVolumeByCampusId(paramMap));//获取指定时间段和指定校区的订单交易额
             paramMap.put("payWay", 1);    //payWay:0,没有; 1,支付宝; 2,微信
@@ -1545,7 +1545,7 @@ public class OrderController {
         paramMap.put("dateStart", dateStart);
         paramMap.put("dateEnd", dateEnd);
         TradeInfo todayInfo = new TradeInfo();
-        todayInfo.setInfoDateType("今天");
+        todayInfo.setInfoDateType("Today");
         todayInfo.setOrderCount(orderService.getSalesInfoByCampusId(paramMap));    //获取指定时间段和指定校区的订单总数
         todayInfo.setTradeVolume(orderService.getTradeVolumeByCampusId(paramMap));    //获取指定时间段和指定校区的订单交易额
         paramMap.put("payWay", 1);    //payWay:0,没有; 1,支付宝; 2,微信
@@ -1561,7 +1561,7 @@ public class OrderController {
         paramMap.put("dateStart", dateStart);
         paramMap.put("dateEnd", dateEnd);
         TradeInfo weekInfo = new TradeInfo();
-        weekInfo.setInfoDateType("本周");
+        weekInfo.setInfoDateType("This Week");
         weekInfo.setOrderCount(orderService.getSalesInfoByCampusId(paramMap));//获取指定时间段和指定校区的订单总数
         weekInfo.setTradeVolume(orderService.getTradeVolumeByCampusId(paramMap));//获取指定时间段和指定校区的订单交易额
         paramMap.put("payWay", 1);    //payWay:0,没有; 1,支付宝; 2,微信
@@ -1577,7 +1577,7 @@ public class OrderController {
         paramMap.put("dateStart", dateStart);
         paramMap.put("dateEnd", dateEnd);
         TradeInfo monthInfo = new TradeInfo();
-        monthInfo.setInfoDateType("本月");
+        monthInfo.setInfoDateType("This Month");
         monthInfo.setOrderCount(orderService.getSalesInfoByCampusId(paramMap));//获取指定时间段和指定校区的订单总数
         monthInfo.setTradeVolume(orderService.getTradeVolumeByCampusId(paramMap));//获取指定时间段和指定校区的订单交易额
         paramMap.put("payWay", 1);    //payWay:0,没有; 1,支付宝; 2,微信
@@ -1599,15 +1599,15 @@ public class OrderController {
             int flag = orderService.deleteOrderTrue(paramMap);
             if (flag != -1) {
                 resultMap.put(Constants.STATUS, Constants.SUCCESS);
-                resultMap.put(Constants.MESSAGE, "删除成功");
+                resultMap.put(Constants.MESSAGE, "Deleted successfully");
             } else {
                 resultMap.put(Constants.STATUS, Constants.FAILURE);
-                resultMap.put(Constants.MESSAGE, "删除失败");
+                resultMap.put(Constants.MESSAGE, "Delete failed");
             }
         } catch (Exception e) {
             e.getStackTrace();
             resultMap.put(Constants.STATUS, Constants.FAILURE);
-            resultMap.put(Constants.MESSAGE, "删除失败");
+            resultMap.put(Constants.MESSAGE, "Delete failed");
         }
 
         return resultMap;
