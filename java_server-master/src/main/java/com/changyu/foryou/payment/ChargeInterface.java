@@ -31,8 +31,8 @@ public class ChargeInterface {
         Map<String, Object> chargeMap = new HashMap<>();
         chargeMap.put("amount", (int) (amount * 100));                        //金额，以分为单位
         chargeMap.put("currency", "cny");
-        chargeMap.put("subject", "For优商品");            //商品的标题
-        chargeMap.put("body", "For优商品值得信赖");                  //商品的描述
+        chargeMap.put("subject", "Product");            //商品的标题
+        chargeMap.put("body", "trustworthy");                  //商品的描述
         chargeMap.put("order_no", orderId);        //订单号  唯一
         chargeMap.put("channel", channel);               //支付渠道
         chargeMap.put("client_ip", clientIp);              //发起支付请求的客户端ip

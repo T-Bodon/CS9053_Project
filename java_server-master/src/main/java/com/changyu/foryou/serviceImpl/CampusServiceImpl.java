@@ -94,28 +94,28 @@ public class CampusServiceImpl implements CampusService {
 				serial = i;
 				switch(i){
 				case 1:
-					category = "早餐上门";
+					category = "breakfast to home";
 					break;
 				case 2:
-					category = "家政服务";
+					category = "Housekeeping";
 					break;
 				case 3:
-					category = "水果上门";
+					category = "fruit to home";
 					break;
 				case 4:
-					category = "快递代取";
+					category = "Express help";
 					break;
 				case 5:
-					category = "小优推荐";
+					category = "recommended";
 					break;
 				case 6:
-					category = "最新体验";
+					category = "latest experience";
 					break;
 				case 7:
-					category = "特惠秒杀";
+					category = "Special Deals";
 					break;
 				case 8:
-					category = "更多分类";
+					category = "more categories";
 					break;
 				}
 				categoryMap.put("categoryId", categoryId);
@@ -132,16 +132,16 @@ public class CampusServiceImpl implements CampusService {
 			if(count<8){
 				// 说明添加校区失败
 				responseMap.put(Constants.STATUS, Constants.FAILURE);
-				responseMap.put(Constants.MESSAGE, "添加校区失败");
+				responseMap.put(Constants.MESSAGE, "Failed to add campus");
 			}else{
 				responseMap.put(Constants.STATUS, Constants.SUCCESS);
-				responseMap.put(Constants.MESSAGE, "添加校区成功");
+				responseMap.put(Constants.MESSAGE, "Add campus successfully");
 			}
 			//foodCategoryMapper.addCategoryWhenAddCampus(paramMap);
 		} else {
 			// 说明添加校区失败
 			responseMap.put(Constants.STATUS, Constants.FAILURE);
-			responseMap.put(Constants.MESSAGE, "添加校区失败");
+			responseMap.put(Constants.MESSAGE, "Failed to add campus");
 		}
 		return responseMap;
 	}
