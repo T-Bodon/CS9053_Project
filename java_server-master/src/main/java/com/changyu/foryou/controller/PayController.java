@@ -93,7 +93,7 @@ public class PayController {
             @Override
             public void run() {
                 //推送
-                pushService.sendPush(phone, "您的一笔金额为" + price + "的订单已经退回到您的账户中，请及时查看。For优。", 5);
+                pushService.sendPush(phone, "The sum of order is" + price + " has been returned to your account, please check in time.", 5);
             }
         }).start();
 
@@ -140,7 +140,7 @@ public class PayController {
                 List<String> superPhones = userService.getAllSuperAdminPhone(parameterMap);
                 for (String phone : superPhones) {
                     //推送
-                    pushService.sendPush(phone, "一笔新的订单已经到达，请前往选单中查看，并尽早分派配送员进行配送。for优。", 1);
+                    pushService.sendPush(phone, "A new order has arrived, please go to the menu to check and dispatch a courier as soon as possible.", 1);
                 }
             }
         }).start();

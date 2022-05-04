@@ -47,7 +47,7 @@ public class SellerController {
 			if (sellers != null) {
 				if (sellers.getPassword().equals(Md5.GetMD5Code(password))) {
 					map.put(Constants.STATUS, Constants.SUCCESS);
-					map.put(Constants.MESSAGE, "登陆成功");
+					map.put(Constants.MESSAGE, "Landed successfully");
 					map.put("type", sellers.getType());
 					HttpSession session = request.getSession();
 					session.setAttribute("type", sellers.getType());
@@ -57,11 +57,11 @@ public class SellerController {
 					sellerService.updateLastLoginTime(date, campusAdmin);
 				} else {
 					map.put(Constants.STATUS, Constants.FAILURE);
-					map.put(Constants.MESSAGE, "账号或密码错误，请检查后输入");
+					map.put(Constants.MESSAGE, "The account number or password is incorrect, please check and enter");
 				}
 			} else {
 				map.put(Constants.STATUS, Constants.FAILURE);
-				map.put(Constants.MESSAGE, "账号或密码错误，请检查后输入");
+				map.put(Constants.MESSAGE, "The account number or password is incorrect, please check and enter");
 			}
 		}
 
@@ -96,12 +96,12 @@ public class SellerController {
 		if(sellers==null)
 		{
 			map.put(Constants.STATUS, Constants.SUCCESS);
-			map.put(Constants.MESSAGE, "该用户名不存在，可以注册");
+			map.put(Constants.MESSAGE, "The username does not exist, you can register");
 		}
 		else
 		{
 			map.put(Constants.STATUS, Constants.FAILURE);
-			map.put(Constants.MESSAGE, "该用户名已存在，请换一个名字");			
+			map.put(Constants.MESSAGE, "The username already exists, please change it");
 		}
 		
 		return map;	
@@ -130,18 +130,18 @@ public class SellerController {
 				seller.setCampusId(campusId);
 				sellerService.addASeller(seller);	
 				map.put(Constants.STATUS, Constants.SUCCESS);
-				map.put(Constants.MESSAGE, "注册成功");
+				map.put(Constants.MESSAGE, "Registration success");
 			    }				
 				else
 				{
 					map.put(Constants.STATUS, Constants.FAILURE);
-					map.put(Constants.MESSAGE, "注册失败2");
+					map.put(Constants.MESSAGE, "Registration failed");
 				}
 			}
 		    catch (Exception e) {
 			e.printStackTrace();
 			map.put(Constants.STATUS, Constants.FAILURE);
-			map.put(Constants.MESSAGE, "注册失败");
+			map.put(Constants.MESSAGE, "Registration failed");
 
 		}
 

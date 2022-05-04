@@ -59,10 +59,10 @@ public class PreferentialController {
 		int flag = preferentialService.insert(preferential);
 		if(flag!=0&&flag!=-1){
 			map.put(Constants.STATUS, Constants.SUCCESS);
-			map.put(Constants.MESSAGE, "添加成功");
+			map.put(Constants.MESSAGE, "Add successfully");
 		}else{
 			map.put(Constants.STATUS, Constants.FAILURE);
-			map.put(Constants.MESSAGE, "添加失败");
+			map.put(Constants.MESSAGE, "Add failed");
 		}
 		return map;
 	}
@@ -80,10 +80,10 @@ public class PreferentialController {
 		int flag = preferentialService.deleteByPrimaryKey(preferentialId);
 		if(flag!=0&&flag!=-1){
 			map.put(Constants.STATUS, Constants.SUCCESS);
-			map.put(Constants.MESSAGE, "删除成功");
+			map.put(Constants.MESSAGE, "successfully deleted");
 		}else{
 			map.put(Constants.STATUS, Constants.FAILURE);
-			map.put(Constants.MESSAGE, "删除失败");
+			map.put(Constants.MESSAGE, "failed to delete");
 		}
 		return map;
 	}
@@ -109,10 +109,10 @@ public class PreferentialController {
 		int flag = preferentialService.updateByPrimaryKey(preferential);
 		if(flag!=0&&flag!=-1){
 			map.put(Constants.STATUS, Constants.SUCCESS);
-			map.put(Constants.MESSAGE, "更新成功");
+			map.put(Constants.MESSAGE, "update completed");
 		}else{
 			map.put(Constants.STATUS, Constants.FAILURE);
-			map.put(Constants.MESSAGE, "更新失败");
+			map.put(Constants.MESSAGE, "update failed");
 		}
 		return map;
 	}

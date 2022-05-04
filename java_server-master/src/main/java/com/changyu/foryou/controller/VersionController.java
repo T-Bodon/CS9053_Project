@@ -27,7 +27,7 @@ public class VersionController {
 		map.put("ios_version", "1.0.1");
 		map.put("android_version", "1.1.0");
 		map.put(Constants.STATUS, Constants.SUCCESS);
-		map.put(Constants.MESSAGE, "获取版本号成功");
+		map.put(Constants.MESSAGE, "Get version number successfully");
 		return map;
 	}
 }

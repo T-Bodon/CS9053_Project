@@ -132,7 +132,7 @@ public class UserController {
 				System.out.println(Md5.GetMD5Code(password));
 				if (users.getPassword().equals(Md5.GetMD5Code(password))) {
 					map.put(Constants.STATUS, Constants.SUCCESS);
-					map.put(Constants.MESSAGE, "登陆成功");
+					map.put(Constants.MESSAGE, "Landed successfully");
 					map.put("type", users.getType());
 					HttpSession session=request.getSession();
 					session.setAttribute("type", users.getType());
@@ -142,11 +142,11 @@ public class UserController {
 					orderService.deleteStatus7Order(phone);
 				} else {
 					map.put(Constants.STATUS, Constants.FAILURE);
-					map.put(Constants.MESSAGE, "账号或密码错误，请检查后输入");
+					map.put(Constants.MESSAGE, "The account number or password is incorrect, please check and enter");
 				}
 			} else {
 				map.put(Constants.STATUS, Constants.FAILURE);
-				map.put(Constants.MESSAGE, "账号或密码错误，请检查后输入");
+				map.put(Constants.MESSAGE, "The account number or password is incorrect, please check and enter");
 			}
 		}
 
@@ -164,10 +164,10 @@ public class UserController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		if (userService.selectByUsername(phone) != null) {
 			map.put(Constants.STATUS, Constants.FAILURE);
-			map.put(Constants.MESSAGE, "该账号已经被注册");
+			map.put(Constants.MESSAGE, "The account has already been registered");
 		} else {
 			map.put(Constants.STATUS, Constants.SUCCESS);
-			map.put(Constants.MESSAGE, "该账号可以注册");
+			map.put(Constants.MESSAGE, "This account can be registered");
 		}
 		return map;
 	}
@@ -193,14 +193,14 @@ public class UserController {
 				Users users = new Users(phone, passwordMd5, nickname);
 				userService.addUsers(users);
 				map.put(Constants.STATUS, Constants.SUCCESS);
-				map.put(Constants.MESSAGE, "注册成功");
+				map.put(Constants.MESSAGE, "Registration success");
 			} else {
 				map.put(Constants.STATUS, Constants.FAILURE);
-				map.put(Constants.MESSAGE, "注册失败");
+				map.put(Constants.MESSAGE, "Registration failed");
 			}
 		} catch (Exception e) {
 			map.put(Constants.STATUS, Constants.FAILURE); // 捕捉异常
-			map.put(Constants.MESSAGE, "注册失败");
+			map.put(Constants.MESSAGE, "Registration failed");
 			return map;
 		}
 
@@ -224,15 +224,15 @@ public class UserController {
 			if (users != null) {
 				userService.updatePassword(phone,Md5.GetMD5Code(newPassword));  //对密码做md5加密
 				map.put(Constants.STATUS, Constants.SUCCESS);
-				map.put(Constants.MESSAGE, "修改密码成功");
+				map.put(Constants.MESSAGE, "password has been updated");
 			} else {
 				map.put(Constants.STATUS, Constants.FAILURE);
-				map.put(Constants.MESSAGE, "修改密码失败");
+				map.put(Constants.MESSAGE, "Failed to change password");
 			}
 		} catch (Exception e) {
 			e.getStackTrace();
 			map.put(Constants.STATUS, Constants.FAILURE);
-			map.put(Constants.MESSAGE, "修改密码失败");
+			map.put(Constants.MESSAGE, "Failed to change password");
 		}
 		return map;
 	}
@@ -283,15 +283,15 @@ public class UserController {
 
 			if(userService.updateUserInfo(users)!=-1){
 				map.put(Constants.STATUS, Constants.SUCCESS);
-				map.put(Constants.MESSAGE, "修改用户信息成功");
+				map.put(Constants.MESSAGE, "Modify user information successfully");
 			}else{
 				map.put(Constants.STATUS, Constants.FAILURE);
-				map.put(Constants.MESSAGE, "修改用户信息失败");
+				map.put(Constants.MESSAGE, "Failed to modify user information");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			map.put(Constants.STATUS, Constants.FAILURE);
-			map.put(Constants.MESSAGE, "修改用户信息失败");
+			map.put(Constants.MESSAGE, "Failed to modify user information");
 		}
 		return map;
 	}
@@ -327,7 +327,7 @@ public class UserController {
 				//map.put("waitCommentOrder", counts.get("comment"));
 				
 				map.put(Constants.STATUS,Constants.SUCCESS);
-				map.put(Constants.MESSAGE, "获取数据成功");
+				map.put(Constants.MESSAGE, "Get data successfully");
 				map.put("waitPayOrder", togetherId1.size());
 				map.put("waitMakeSureOrder", togetherId2.size());
 				map.put("distribution", togetherId3.size());
@@ -337,7 +337,7 @@ public class UserController {
 			}	
 		} catch (Exception e) {
 			e.printStackTrace();
-			map.put(Constants.MESSAGE, "获取用户信息失败！");
+			map.put(Constants.MESSAGE, "Failed to get user information！");
 			map.put(Constants.STATUS, Constants.FAILURE);
 		}
 
@@ -364,15 +364,15 @@ public class UserController {
              System.out.println(suggestion);
 			if(userService.addFeedbackSuggestion(feedback)!=-1){
 				map.put(Constants.STATUS, Constants.SUCCESS);
-				map.put(Constants.MESSAGE, "添加意见成功");
+				map.put(Constants.MESSAGE, "Comment added successfully");
 			}else{
 				map.put(Constants.STATUS, Constants.FAILURE);
-				map.put(Constants.MESSAGE, "添加意见失败");
+				map.put(Constants.MESSAGE, "Failed to comment");
 			}
 		}catch(Exception e){
 			e.getStackTrace();
 			map.put(Constants.STATUS, Constants.FAILURE);
-			map.put(Constants.MESSAGE, "添加意见失败");
+			map.put(Constants.MESSAGE, "Failed to comment");
 		}
 
 		return map;
@@ -400,7 +400,7 @@ public class UserController {
 
 		if (image == null) {
 			map.put(Constants.STATUS, Constants.FAILURE);
-			map.put(Constants.MESSAGE, "没有文件");
+			map.put(Constants.MESSAGE, "no file");
 		}
 
 		@SuppressWarnings("restriction")
@@ -442,15 +442,15 @@ public class UserController {
 			if(flag==1){
 				map.put("imageUrl", imageUrl);
 				map.put(Constants.STATUS, Constants.SUCCESS);
-				map.put(Constants.MESSAGE, "头像更新成功!");
+				map.put(Constants.MESSAGE, "Avatar updated successfully!");
 			}else{
 				map.put(Constants.STATUS, Constants.FAILURE);
-				map.put(Constants.MESSAGE, "头像更新失败");
+				map.put(Constants.MESSAGE, "Avatar update failed");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			map.put(Constants.STATUS, Constants.FAILURE);
-			map.put(Constants.MESSAGE, "头像更新失败");
+			map.put(Constants.MESSAGE, "Avatar update failed");
 		}
 
 		return map;
@@ -469,7 +469,7 @@ public class UserController {
 
 		if (log == null) {
 			map.put(Constants.STATUS, Constants.FAILURE);
-			map.put(Constants.MESSAGE, "没有文件");
+			map.put(Constants.MESSAGE, "no file");
 			return map;
 		}
 
@@ -494,12 +494,12 @@ public class UserController {
 			out.close();
 
 			map.put(Constants.STATUS, Constants.SUCCESS);
-			map.put(Constants.MESSAGE, "log日志上传成功!");
+			map.put(Constants.MESSAGE, "log uploaded successfully!");
 
 		} catch (Exception e) {
 			e.printStackTrace();
 			map.put(Constants.STATUS, Constants.FAILURE);
-			map.put(Constants.MESSAGE, "log日志上传失败！");
+			map.put(Constants.MESSAGE, "log upload failed！");
 		}
 
 		return map;
@@ -519,12 +519,12 @@ public class UserController {
 		try{
 			List<Users> users=userService.getDeliverAdmin(paramMap);
 			map.put(Constants.STATUS, Constants.SUCCESS);
-			map.put(Constants.MESSAGE, "获取配送员成功!");
+			map.put(Constants.MESSAGE, "Get deliveryman success!");
 			map.put("deliverAdmins", users);
 		}catch(Exception e){
 			e.printStackTrace();
 			map.put(Constants.STATUS, Constants.FAILURE);
-			map.put(Constants.MESSAGE, "获取配送员失败！");
+			map.put(Constants.MESSAGE, "Failed to get courier！");
 		}
 
 		return map;
@@ -546,12 +546,12 @@ public class UserController {
 			
 			if(flag!=0&flag!=-1){
 				map.put(Constants.STATUS, Constants.SUCCESS);
-				map.put(Constants.MESSAGE, "设置用户token成功!");
+				map.put(Constants.MESSAGE, "Set user token successfully!");
 			}
 		}catch(Exception e){
 			e.printStackTrace();
 			map.put(Constants.STATUS, Constants.FAILURE);
-			map.put(Constants.MESSAGE, "设置用户token失败");
+			map.put(Constants.MESSAGE, "Failed to set user token");
 		}
 
 		return map;
@@ -654,19 +654,19 @@ public class UserController {
 					if(users.size()==0)
 					{
 						map.put(Constants.STATUS, Constants.FAILURE);
-						map.put(Constants.MESSAGE, "更改失败，原密码错误");
+						map.put(Constants.MESSAGE, "Change failed, original password is wrong");
 					}
 					else
 					{
 						userService.updatePassword(phone,Md5.GetMD5Code(newPassword));  //对密码做md5加密
 						map.put(Constants.STATUS, Constants.SUCCESS);
-						map.put(Constants.MESSAGE, "修改密码成功");
+						map.put(Constants.MESSAGE, "password has been updated");
 					}	
 					
 				} catch (Exception e) {
 					e.printStackTrace();	
 					map.put(Constants.STATUS, Constants.FAILURE);
-					map.put(Constants.MESSAGE, "修改密码失败");					
+					map.put(Constants.MESSAGE, "Failed to change password");
 				}				
 				return map;	
 	}

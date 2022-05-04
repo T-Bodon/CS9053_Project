@@ -61,15 +61,15 @@ public class ReceiverController {
 
 			if(receiverService.insert(receiver)!=-1){
 				map.put(Constants.STATUS, Constants.SUCCESS);
-				map.put(Constants.MESSAGE, "添加成功！");
+				map.put(Constants.MESSAGE, "Add successfully!");
 			}else{
 				map.put(Constants.STATUS, Constants.FAILURE);
-				map.put(Constants.MESSAGE, "添加失败！");
+				map.put(Constants.MESSAGE, "Add failed！");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			map.put(Constants.STATUS, Constants.FAILURE);
-			map.put(Constants.MESSAGE, "添加失败！");
+			map.put(Constants.MESSAGE, "Add failed！");
 		}
 
 		return map;
@@ -88,11 +88,11 @@ public class ReceiverController {
 			List<Receiver> receivers=receiverService.selectByPhoneId(phoneId);
 			map.put("receivers", receivers);
 			map.put(Constants.STATUS, Constants.SUCCESS);
-			map.put(Constants.MESSAGE, "获取成功");
+			map.put(Constants.MESSAGE, "Get successfully");
 		} catch (Exception e) {
 			e.getStackTrace();
 			map.put(Constants.STATUS, Constants.FAILURE);
-			map.put(Constants.MESSAGE, "获取失败！");
+			map.put(Constants.MESSAGE, "Get failed！");
 		}
 		return map;
 	}
@@ -116,15 +116,15 @@ public class ReceiverController {
 			receiver.setRank(rank);
 			if(receiverService.updateByPrimaryKeySelective(receiver)!=-1){
 				map.put(Constants.STATUS, Constants.SUCCESS);
-				map.put(Constants.MESSAGE, "更新收货人信息成功");
+				map.put(Constants.MESSAGE, "Update consignee information successfully");
 			}else{
 				map.put(Constants.STATUS, Constants.FAILURE);
-				map.put(Constants.MESSAGE, "更新收货人信息失败");
+				map.put(Constants.MESSAGE, "Failed to update consignee information");
 			}
 		} catch (Exception e) {
 			e.getStackTrace();
 			map.put(Constants.STATUS, Constants.FAILURE);
-			map.put(Constants.MESSAGE, "更新收货人信息失败！");
+			map.put(Constants.MESSAGE, "Failed to update consignee information！");
 		}
 		return map;
 	}
@@ -142,15 +142,15 @@ public class ReceiverController {
 			receiverService.setReceiverTag(phoneId);   //将原先的默认收货地址改成非默认
 			if(receiverService.setDefaultAddress(phoneId, rank)!=-1){
 				map.put(Constants.STATUS, Constants.SUCCESS);
-				map.put(Constants.MESSAGE, "设置默认收货地址成功");
+				map.put(Constants.MESSAGE, "Set the default delivery address successfully");
 			}else{
 				map.put(Constants.STATUS, Constants.FAILURE);
-				map.put(Constants.MESSAGE, "设置默认收货地址失败");
+				map.put(Constants.MESSAGE, "Failed to set default shipping address");
 			}
 		}catch (Exception e) {
 			e.getStackTrace();
 			map.put(Constants.STATUS, Constants.FAILURE);
-			map.put(Constants.MESSAGE, "设置默认收货地址失败！");
+			map.put(Constants.MESSAGE, "Failed to set default shipping address！");
 		}
 
 		return map;
@@ -171,15 +171,15 @@ public class ReceiverController {
 			int flag=receiverService.deleteByPrimaryKey(phoneId, rank);
 			if(flag!=-1&&flag!=0){
 				map.put(Constants.STATUS, Constants.SUCCESS);
-				map.put(Constants.MESSAGE, "删除地址成功!");
+				map.put(Constants.MESSAGE, "Address deleted successfully!");
 			}else{
 				map.put(Constants.STATUS, Constants.FAILURE);
-				map.put(Constants.MESSAGE, "删除地址失败！");
+				map.put(Constants.MESSAGE, "Failed to delete address！");
 			}
 		} catch (Exception e) {
 			e.getStackTrace();
 			map.put(Constants.STATUS, Constants.FAILURE);
-			map.put(Constants.MESSAGE, "删除地址失败！");
+			map.put(Constants.MESSAGE, "Failed to delete address！");
 		}
 		return map;
 	}
