@@ -17,7 +17,7 @@ Wenxiang Yu / Wentao Zhu
 This project is the code of the server and management platform of the campus o2o e-commerce project. It adopts the 'springboot mybatis' architecture and integrates rich functions such as SMS, push, payment and permission management.
 
 ## Update
-- 2017-7-21 
+- 2022-5-11 
 >  
 1. Solve the problem that the spring jar package is too old to run.
 2. The project is updated to the springboot project, and the springboot version is 1.5.2
