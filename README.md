@@ -12,6 +12,7 @@ Wenxiang Yu / Wentao Zhu
 <a href="http://www.mybatis.org/mybatis-3/"><img src="https://img.shields.io/badge/mybatis-3.3.0-660000.svg"></a>
 <img src="https://img.shields.io/badge/license-MIT%203.0-CC3333.svg">
 <img src="https://img.shields.io/badge/release-1.0.0-brightgreen.svg">
+<img src="Homepage.png">
 </p>
 
 This project is the code of the server and management platform of the campus o2o e-commerce project. It adopts the 'springboot mybatis' architecture and integrates rich functions such as SMS, push, payment and permission management.
